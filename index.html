@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="de" data-page-version="2026-09-20-002">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AERIS — Außerklinische Intensivpflege</title>
+<meta name="theme-color" content="#2B4570">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="manifest" href="manifest.json">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="AERIS">
+<script>if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; } window.scrollTo(0, 0);</script>
+
+<link rel="stylesheet" href="app.css">
+</head>
+<body class="bg-[#131B27] text-white antialiased">
+
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[999] focus:bg-white focus:text-[#17273F] focus:px-4 focus:py-2 focus:rounded-md focus:font-bold">Zum Inhalt springen</a>
+
+  <!-- Header (sticky, Glass-Blur) -->
+  <header id="ae-header" class="ae-header fixed top-0 inset-x-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 md:px-8 h-20 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2">
+        <div class="ae-logo-glow-wrap">
+          <svg width="52" height="52" viewBox="0 0 100 100" role="img" aria-label="AERIS-Logo" class="ae-logo">
+            <defs>
+              <linearGradient id="aeRingHeader" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#6B4423"/><stop offset="16%" stop-color="#B87333"/>
+                <stop offset="34%" stop-color="#6B4423"/><stop offset="50%" stop-color="#E8C39E"/>
+                <stop offset="64%" stop-color="#B87333"/><stop offset="82%" stop-color="#6B4423"/>
+                <stop offset="100%" stop-color="#E8C39E"/>
+              </linearGradient>
+            </defs>
+            <circle cx="51.8" cy="51.8" r="40" fill="none" stroke="#D9D9D9" stroke-opacity="0.45" stroke-width="12"/>
+            <circle cx="50" cy="50" r="40" fill="none" stroke="url(#aeRingHeader)" stroke-width="12"/>
+            <circle cx="50" cy="50" r="45" fill="none" stroke="#FFFFFF" stroke-width="2.2"/>
+            <circle cx="50" cy="50" r="35" fill="none" stroke="#FFFFFF" stroke-width="2.2"/>
+            <path d="M 10 50 A 40 40 0 0 1 50 10" fill="none" stroke="#FFFFFF" stroke-opacity="0.55" stroke-width="6.6" stroke-linecap="round"/>
+            <path d="M 90 50 A 40 40 0 0 1 50 90" fill="none" stroke="#D9D9D9" stroke-opacity="0.5" stroke-width="6.6" stroke-linecap="round"/>
+            <path d="M 20 63 C 26 63, 28 37, 35 37 C 40 37, 42 63, 48 63 C 54 63, 56 37, 63 37 C 68 37, 70 63, 80 63"
+                  fill="none" stroke="url(#aeRingHeader)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span class="ae-michroma text-2xl tracking-wide relative inline-flex items-center" style="font-weight:800; filter: drop-shadow(0 3px 3px rgba(0,0,0,0.55));">
+          <span class="ae-metallic">AERIS</span>
+        </span>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-[#E0E0E0]">
+        <a href="#qualifikation" class="hover:text-white transition-colors">Qualifikation</a>
+        <a href="#ueber-mich" class="hover:text-white transition-colors">Über mich</a>
+        <a href="#ablauf" class="hover:text-white transition-colors">Ablauf</a>
+        <a href="#kontakt" class="hover:text-white transition-colors">Kontakt</a>
+      </nav>
+      <div class="hidden md:block">
+        <a href="#kontakt" class="ae-btn-primary text-sm px-5 py-3.5">Erstkontakt anfragen</a>
+      </div>
+      <button id="ae-menu-toggle" class="ae-menu-btn md:hidden" aria-label="Menü öffnen" aria-expanded="false" aria-controls="ae-sidebar">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Offcanvas-Sidebar (mobil) -->
+  <aside id="ae-sidebar" class="ae-sidebar" aria-hidden="true">
+    <div class="ae-sidebar-brand">
+      <span class="ae-michroma text-base tracking-wide relative inline-flex items-center" style="font-weight:800; filter: drop-shadow(0 2px 2px rgba(0,0,0,0.5));">
+        <span class="ae-metallic">AERIS</span>
+      </span>
+      <button id="ae-sidebar-close" class="ae-sidebar-close" aria-label="Navigation schließen">✕</button>
+    </div>
+    <nav class="ae-sidebar-nav">
+      <a href="#qualifikation">Qualifikation</a>
+      <a href="#ueber-mich">Über mich</a>
+      <a href="#ablauf">Ablauf</a>
+      <a href="#kontakt">Kontakt</a>
+      <a href="#kontakt" class="ae-btn-primary text-center">Erstkontakt anfragen</a>
+    </nav>
+  </aside>
+  <div id="ae-sidebar-backdrop" class="ae-sidebar-backdrop"></div>
+
+  <div class="pt-20">
+
+    <!-- Hero -->
+    <section aria-label="Hero" class="ae-hero flex flex-col items-center justify-center text-center px-6 py-16 md:py-24">
+      <div class="ae-logo-glow-wrap mb-5">
+        <svg width="88" height="88" viewBox="0 0 100 100" role="img" aria-label="AERIS-Logo" class="ae-logo">
+          <defs>
+            <linearGradient id="aeRingHero" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#6B4423"/><stop offset="16%" stop-color="#B87333"/>
+              <stop offset="34%" stop-color="#6B4423"/><stop offset="50%" stop-color="#E8C39E"/>
+              <stop offset="64%" stop-color="#B87333"/><stop offset="82%" stop-color="#6B4423"/>
+              <stop offset="100%" stop-color="#E8C39E"/>
+            </linearGradient>
+          </defs>
+          <circle cx="51.8" cy="51.8" r="40" fill="none" stroke="#D9D9D9" stroke-opacity="0.45" stroke-width="12"/>
+          <circle cx="50" cy="50" r="40" fill="none" stroke="url(#aeRingHero)" stroke-width="12"/>
+          <circle cx="50" cy="50" r="45" fill="none" stroke="#FFFFFF" stroke-width="2.2"/>
+          <circle cx="50" cy="50" r="35" fill="none" stroke="#FFFFFF" stroke-width="2.2"/>
+          <path d="M 10 50 A 40 40 0 0 1 50 10" fill="none" stroke="#FFFFFF" stroke-opacity="0.55" stroke-width="6.6" stroke-linecap="round"/>
+          <path d="M 90 50 A 40 40 0 0 1 50 90" fill="none" stroke="#D9D9D9" stroke-opacity="0.5" stroke-width="6.6" stroke-linecap="round"/>
+          <path d="M 20 63 C 26 63, 28 37, 35 37 C 40 37, 42 63, 48 63 C 54 63, 56 37, 63 37 C 68 37, 70 63, 80 63"
+                fill="none" stroke="url(#aeRingHero)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <p class="text-[#7C93B8] text-xs md:text-sm font-semibold tracking-wide uppercase mb-2">Außerklinische Evidenzbasierte Respiratorische Intensivpflege Services</p>
+      <h1 class="ae-michroma text-lg md:text-3xl mb-4 max-w-3xl leading-snug break-words">AERIS — Außerklinische Intensivpflege im 1:1-Betreuungsschlüssel</h1>
+      <p class="text-[#E0E0E0] text-sm md:text-base max-w-xl mb-8">Fachpflegerische Versorgung zu Hause statt Klinik — für Menschen mit invasiver/nicht-invasiver Beatmung, komplexem Schmerz- und Wundmanagement.</p>
+      <div class="flex flex-col sm:flex-row gap-3">
+        <a href="#kontakt" class="ae-btn-primary">Erstkontakt anfragen</a>
+        <a href="#qualifikation" class="ae-btn-secondary">Qualifikation ansehen</a>
+      </div>
+    </section>
+
+    <!-- Einordnungsleiste -->
+    <div class="ae-glass-strip text-center text-[#C0C0C0] text-xs md:text-sm py-3 px-4">
+      Einzelunternehmen für außerklinische Intensivpflege · 1:1-Betreuung · Dautphetal und Umgebung
+    </div>
+
+    <main id="main-content" class="max-w-6xl mx-auto px-4 md:px-8">
+
+      <!-- Warum 1:1-Versorgung -->
+      <section id="warum" class="py-16 md:py-24 -mx-4 md:-mx-8 px-4 md:px-8" style="background: radial-gradient(ellipse at top, rgba(184,115,51,0.10), transparent 60%), linear-gradient(180deg, rgba(37,49,68,0.4), transparent);">
+        <div class="max-w-xs mx-auto mb-4" style="height:2px; background: linear-gradient(90deg, transparent, #B87333, transparent);"></div>
+        <h2 class="ae-michroma text-xl md:text-3xl mb-8 text-center" style="color:#E8C39E;">Warum 1:1-Versorgung</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div>
+            <h3 class="font-bold text-base mb-2 text-white">Individueller Betreuungsschlüssel</h3>
+            <p class="text-[#C0C0C0] text-sm leading-relaxed">1:1-Versorgung statt Schichtbetreuung mehrerer Klienten — eine Fachkraft, ein Fokus.</p>
+          </div>
+          <div>
+            <h3 class="font-bold text-base mb-2 text-white">Hospitalisierungsvermeidung</h3>
+            <p class="text-[#C0C0C0] text-sm leading-relaxed">Kontinuierliches fachpflegerisches Monitoring zielt darauf ab, ungeplante Krankenhausaufenthalte durch frühzeitiges Erkennen von Veränderungen zu reduzieren.</p>
+          </div>
+          <div>
+            <h3 class="font-bold text-base mb-2 text-white">Erhalt der Lebenswelt</h3>
+            <p class="text-[#C0C0C0] text-sm leading-relaxed">Versorgung im eigenen Zuhause statt Verlegung in eine Pflegeeinrichtung oder dauerhaften Klinikaufenthalt.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Qualifikation -->
+      <section id="qualifikation" class="py-16 md:py-24 -mx-4 md:-mx-8 px-4 md:px-8" style="background: radial-gradient(ellipse at top, rgba(184,115,51,0.10), transparent 60%), linear-gradient(180deg, rgba(37,49,68,0.4), transparent);">
+        <div class="max-w-xs mx-auto mb-4" style="height:2px; background: linear-gradient(90deg, transparent, #B87333, transparent);"></div>
+        <h2 class="ae-michroma text-xl md:text-3xl mb-8 text-center" style="color:#E8C39E;">Qualifikation</h2>
+        <div class="grid md:grid-cols-3 gap-8 ae-tile-grid">
+          <div>
+            <svg class="w-7 h-7 mb-2" style="color:#B87333" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg>
+            <h3 class="font-bold text-base mb-2 text-white">Pflegefachkraft für außerklinische Beatmung/AKI</h3>
+            <p class="text-[#C0C0C0] text-sm leading-relaxed">Kernqualifikation für die 1:1-Versorgung intensivpflegepflichtiger Klient:innen im häuslichen Umfeld. Vermittelt die fachlichen Grundlagen für Monitoring, Notfallmanagement und die enge Zusammenarbeit mit Ärzt:innen und Angehörigen.</p>
+          </div>
+          <div>
+            <svg class="w-7 h-7 mb-2" style="color:#B87333" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><g transform="rotate(-30 12 12)"><rect x="4" y="9" width="16" height="6" rx="3"/><line x1="12" y1="9" x2="12" y2="15"/></g></svg>
+            <h3 class="font-bold text-base mb-2 text-white">Pain Nurse (DGSS)</h3>
+            <p class="text-[#C0C0C0] text-sm leading-relaxed">Spezialisierung auf Schmerzmanagement nach ärztlichem Therapieplan. Unterstützt eine strukturierte Erfassung und Verlaufsbeobachtung von Schmerzsymptomatik.</p>
+          </div>
+          <div>
+            <svg class="w-7 h-7 mb-2" style="color:#B87333" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><g transform="rotate(-30 12 12)"><rect x="4" y="9" width="16" height="6" rx="3"/></g><path d="M9 9v6M15 9v6"/></svg>
+            <h3 class="font-bold text-base mb-2 text-white">Wundexperte (ICW&reg;)</h3>
+            <p class="text-[#C0C0C0] text-sm leading-relaxed">Qualifikation für fachgerechte Wundversorgung und lückenlose Wunddokumentation. Begleitet den Heilungsverlauf in enger Abstimmung mit behandelnden Ärzt:innen.</p>
+          </div>
+          <div>
+            <svg class="w-7 h-7 mb-2" style="color:#B87333" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h12v9H9l-4 3v-3H4z"/><line x1="7" y1="8" x2="13" y2="8"/><line x1="7" y1="11" x2="11" y2="11"/></svg>
+            <h3 class="font-bold text-base mb-2 text-white">Pflegeberater (§ 7a SGB XI)</h3>
+            <p class="text-[#C0C0C0] text-sm leading-relaxed">Berät Klient:innen und Angehörige zu Pflegeleistungen, Antragsverfahren und der Ausgestaltung des individuellen Versorgungsarrangements.</p>
+          </div>
+          <div>
+            <svg class="w-7 h-7 mb-2" style="color:#B87333" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c-4-3-8-6.5-8-11a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 4.5-4 8-8 11z"/><path d="M4 12h3l2-4 3 7 2-4h6"/></svg>
+            <h3 class="font-bold text-base mb-2 text-white">ERC ALS Provider</h3>
+            <p class="text-[#C0C0C0] text-sm leading-relaxed">Zertifizierte Qualifikation im Advanced Life Support (European Resuscitation Council) für strukturiertes Notfall- und Reanimationsmanagement im häuslichen Umfeld.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Über mich -->
+      <section id="ueber-mich" class="py-16 md:py-24 -mx-4 md:-mx-8 px-4 md:px-8" style="background: radial-gradient(ellipse at top, rgba(184,115,51,0.10), transparent 60%), linear-gradient(180deg, rgba(37,49,68,0.4), transparent);">
+        <div class="max-w-xs mx-auto mb-4" style="height:2px; background: linear-gradient(90deg, transparent, #B87333, transparent);"></div>
+        <h2 class="ae-michroma text-xl md:text-3xl mb-3 text-center" style="color:#E8C39E;">Über mich — René Krieg</h2>
+        <p class="text-[#7C93B8] text-base md:text-lg font-semibold text-center mb-10">Pionier in der Intensivpflege, Systemgestalter &amp; Mensch mit klarer Haltung</p>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div>
+            <h3 class="font-bold text-base mb-2 text-white">Wer ich bin</h3>
+            <p class="text-[#C0C0C0] text-sm leading-relaxed mb-3">Ich bin <strong class="text-white">René Krieg</strong> — Mensch, Entwickler und Experte für Außerklinische Intensivpflege (AERIS) und digitale Pflegedokumentationssysteme aus Dautphetal.</p>
+            <p class="text-[#C0C0C0] text-sm leading-relaxed">Was mich im Kern antreibt: komplexe, oft starre Systeme menschlicher, rechtssicherer und effizienter zu gestalten — klare, pragmatische Lösungen, die Menschen ihre Selbstbestimmung und Würde zurückgeben.</p>
+          </div>
+          <div>
+            <h3 class="font-bold text-base mb-2 text-white">Meine Persönlichkeit im Profil</h3>
+            <ul class="text-[#C0C0C0] text-sm leading-relaxed space-y-3">
+              <li><strong class="text-white">Gnadenlose Ehrlichkeit &amp; Substanziellheit</strong> — direkte, unverschleierte Diagnosen statt Halbwissen und Floskeln.</li>
+              <li><strong class="text-white">Tiefe Empathie, kühle Krisenfestigkeit</strong> — ruhig und entscheidungsstark, wenn es um Leben und Sicherheit geht.</li>
+              <li><strong class="text-white">Pioniergeist &amp; Systemoptimierung</strong> — verfahrene Prozesse neu, schlank und ästhetisch aufbauen.</li>
+              <li><strong class="text-white">Struktur, Unabhängigkeit &amp; Konsequenz</strong> — Ziele konsequent bis zum vollfunktionsfähigen Ergebnis verfolgen.</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-bold text-base mb-2 text-white">Meine Haltung &amp; Philosophie</h3>
+            <ul class="text-[#C0C0C0] text-sm leading-relaxed space-y-3">
+              <li><strong class="text-white">Würde vor Bürokratie</strong> — Paragraphen und Systeme müssen dem Menschen dienen, niemals umgekehrt.</li>
+              <li><strong class="text-white">Klarheit vor Schnörkel</strong> — lieber eine ehrliche, einfache Wahrheit als eine hübsch verpackte Ausflucht.</li>
+              <li><strong class="text-white">Ganzheitliches Handeln</strong> — Expertentum entsteht, wo klinisches Wissen, Rechtssicherheit und menschliche Wärme zusammenkommen.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Ablauf -->
+      <section id="ablauf" class="py-16 md:py-24 -mx-4 md:-mx-8 px-4 md:px-8" style="background: radial-gradient(ellipse at top, rgba(184,115,51,0.10), transparent 60%), linear-gradient(180deg, rgba(37,49,68,0.4), transparent);">
+        <div class="max-w-xs mx-auto mb-4" style="height:2px; background: linear-gradient(90deg, transparent, #B87333, transparent);"></div>
+        <h2 class="ae-michroma text-xl md:text-3xl mb-8 text-center" style="color:#E8C39E;">Ablauf</h2>
+        <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-8">
+          <div>
+            <div class="ae-num-circle">1</div>
+            <h3 class="font-bold text-base mb-2 text-white">Erstkontakt &amp; Bedarfsanalyse</h3>
+            <p class="text-[#C0C0C0] text-sm leading-relaxed">Erstes Gespräch mit Klient:in, Angehörigen oder Kliniksozialdienst zur Einschätzung des individuellen Versorgungsbedarfs.</p>
+          </div>
+          <div>
+            <div class="ae-num-circle">2</div>
+            <h3 class="font-bold text-base mb-2 text-white">Budgetverhandlung &amp; Planung</h3>
+            <p class="text-[#C0C0C0] text-sm leading-relaxed">Klärung der Finanzierung mit den zuständigen Kostenträgern und Abstimmung des Betreuungsumfangs.</p>
+          </div>
+          <div>
+            <div class="ae-num-circle">3</div>
+            <h3 class="font-bold text-base mb-2 text-white">Vertraglicher Rahmen</h3>
+            <p class="text-[#C0C0C0] text-sm leading-relaxed">Festlegung der vertraglichen Grundlagen zwischen Klient:in und AERIS.</p>
+          </div>
+          <div>
+            <div class="ae-num-circle">4</div>
+            <h3 class="font-bold text-base mb-2 text-white">Implementierung &amp; Start</h3>
+            <p class="text-[#C0C0C0] text-sm leading-relaxed">Einarbeitung in die individuelle Versorgungssituation und Beginn der 1:1-Betreuung.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Private Zusatzleistungen -->
+      <section id="private-leistungen" class="py-16 md:py-24 -mx-4 md:-mx-8 px-4 md:px-8" style="background: radial-gradient(ellipse at top, rgba(184,115,51,0.10), transparent 60%), linear-gradient(180deg, rgba(37,49,68,0.4), transparent);">
+        <div class="max-w-xs mx-auto mb-4" style="height:2px; background: linear-gradient(90deg, transparent, #B87333, transparent);"></div>
+        <h2 class="ae-michroma text-xl md:text-3xl mb-3 text-center" style="color:#E8C39E;">Private Zusatzleistungen</h2>
+        <p class="text-[#C0C0C0] text-sm text-center max-w-2xl mx-auto mb-10">Eine Leistung wird nicht über die Pflegekasse oder das Persönliche Budget abgerechnet, sondern direkt mit Ihnen vereinbart — hier transparent erklärt, warum sich die Investition lohnt.</p>
+        <div class="max-w-md mx-auto">
+          <div class="ae-card p-6">
+            <span class="ae-badge">Private Zusatzleistung</span>
+            <h3 class="font-bold text-base mb-1 text-white">Aufnahme &amp; Anamnese</h3>
+            <p class="text-[#C0C0C0] text-sm font-semibold mb-3">165 € Pauschale · Erstgespräch vor Vertragsbeginn</p>
+            <p class="text-[#C0C0C0] text-sm leading-relaxed">Die fachliche Grundlage für einen individuell passenden, sicheren Pflegeplan — sie findet statt, bevor überhaupt ein Antrag bei der Kasse gestellt wird. Genau deshalb ist sie strukturell nicht kassenfähig, nicht weil sie unwichtig wäre: Ohne fundierte Anamnese steigt das Risiko für eine unpassende Versorgung.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Zielgruppen -->
+      <section id="zielgruppen" class="py-16 md:py-24 -mx-4 md:-mx-8 px-4 md:px-8" style="background: radial-gradient(ellipse at top, rgba(184,115,51,0.10), transparent 60%), linear-gradient(180deg, rgba(37,49,68,0.4), transparent);">
+        <div class="max-w-xs mx-auto mb-4" style="height:2px; background: linear-gradient(90deg, transparent, #B87333, transparent);"></div>
+        <h2 class="ae-michroma text-xl md:text-3xl mb-8 text-center" style="color:#E8C39E;">Zielgruppen</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div>
+            <h3 class="font-bold text-base mb-2 text-white">Klient:innen &amp; Angehörige</h3>
+            <p class="text-[#C0C0C0] text-sm leading-relaxed">Sie suchen für sich oder einen Angehörigen eine verlässliche pflegerische Begleitung zu Hause — mit einer festen Bezugsperson statt wechselndem Personal. AERIS steht für persönliche, verständliche Kommunikation auf Augenhöhe.</p>
+          </div>
+          <div>
+            <h3 class="font-bold text-base mb-2 text-white">Kliniksozialdienste</h3>
+            <p class="text-[#C0C0C0] text-sm leading-relaxed">Für die Entlassungsplanung intensivpflegepflichtiger Patient:innen steht ein 1:1-Betreuungsmodell mit klar dokumentierter Qualifikation (AKI-Fachkraft, DGP, DGSS, ICW&reg;, § 7a SGB XI) zur Verfügung — abgestimmt auf komplexe Beatmungs-, Schmerz- und Wundmanagement-Bedarfe.</p>
+          </div>
+          <div>
+            <h3 class="font-bold text-base mb-2 text-white">Kostenträger</h3>
+            <p class="text-[#C0C0C0] text-sm leading-relaxed">Die Versorgung ordnet sich klar in die bestehenden Rechtsgrundlagen ein: Behandlungspflege nach SGB V, Grundpflege nach SGB XI, Persönliches Budget nach § 29 SGB IX. Transparente Leistungsabgrenzung erleichtert die Prüfung im Einzelfall.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Ihre Vorteile bei AERIS -->
+      <section id="vorteile" class="py-16 md:py-24 -mx-4 md:-mx-8 px-4 md:px-8" style="background: radial-gradient(ellipse at top, rgba(184,115,51,0.10), transparent 60%), linear-gradient(180deg, rgba(37,49,68,0.4), transparent);">
+        <div class="max-w-xs mx-auto mb-4" style="height:2px; background: linear-gradient(90deg, transparent, #B87333, transparent);"></div>
+        <h2 class="ae-michroma text-xl md:text-3xl mb-3 text-center" style="color:#E8C39E;">Ihre Vorteile bei AERIS</h2>
+        <p class="text-[#C0C0C0] text-sm text-center max-w-2xl mx-auto mb-10">Eine schlanke, rechtlich klar geregelte Versorgungsform — entwickelt, damit Sie sich auf das Wesentliche verlassen können: eine feste, vertraute Fachkraft statt wechselnder Gesichter.</p>
+
+        <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+          <div class="ae-card p-6">
+            <h3 class="font-bold text-base mb-2 text-white">Rechtlich klar geregelt</h3>
+            <p class="text-[#C0C0C0] text-sm leading-relaxed">AERIS versorgt Sie auf Grundlage von <strong class="text-white">§ 37c SGB V</strong> (Ihr Anspruch als Versicherte:r) und <strong class="text-white">§ 29 SGB IX</strong> (Persönliches Budget) — kein Kassenvertrag, keine Einrichtungspflicht nötig. Wichtig: Die Kosten trägt die Kranken-/Pflegekasse bzw. der zuständige Kostenträger, nicht Sie privat. Über das Persönliche Budget wird das bewilligte Geld an Sie ausgezahlt, Sie leiten es lediglich an AERIS weiter.</p>
+          </div>
+          <div class="ae-card p-6">
+            <h3 class="font-bold text-base mb-2 text-white">Eine feste, vertraute Bezugsperson</h3>
+            <p class="text-[#C0C0C0] text-sm leading-relaxed">Innerhalb der mit Ihrer Kasse vereinbarten Pflegestunden begleitet Sie durchgehend dieselbe Fachkraft — René Krieg persönlich. Keine wechselnden Gesichter, keine Übergaben zwischen fremden Personen, sondern eine echte Vertrauensbeziehung.</p>
+          </div>
+          <div class="ae-card p-6">
+            <h3 class="font-bold text-base mb-2 text-white">Schlank, persönlich, schnell startklar</h3>
+            <p class="text-[#C0C0C0] text-sm leading-relaxed">Als freiberuflicher Einzelunternehmer (§ 18 Abs. 1 Nr. 1 EStG) arbeitet AERIS ohne aufwändige Unternehmensstruktur — kurze Wege, direkte Kommunikation, kein anonymer Kundenservice.</p>
+          </div>
+        </div>
+
+        <div class="ae-card p-6 max-w-2xl mx-auto mt-8">
+          <h3 class="font-bold text-base mb-2 text-white">Und außerhalb dieser Stunden?</h3>
+          <p class="text-[#C0C0C0] text-sm leading-relaxed">Wie eine durchgehende Betreuung rund um die Uhr organisiert wird, hängt von Ihrem individuellen Bedarf ab und wird gemeinsam mit Ihnen besprochen — bei Bedarf in Abstimmung mit weiteren Fachkräften oder Kooperationspartnern. Nehmen Sie einfach Kontakt auf, dann klären wir das gemeinsam.</p>
+        </div>
+      </section>
+
+      <!-- Kontakt -->
+      <section id="kontakt" class="py-16 md:py-20">
+        <div class="ae-card max-w-4xl mx-auto" style="overflow:hidden; padding:0;">
+          <div style="background: linear-gradient(135deg,#6B4423 0%,#B87333 16%,#6B4423 34%,#E8C39E 50%,#B87333 64%,#6B4423 82%,#E8C39E 100%); padding: 22px 24px 18px;">
+            <h2 class="ae-michroma text-lg md:text-xl" style="color:#131B27;">Kontakt</h2>
+            <p class="text-sm" style="color:rgba(19,27,39,.75); margin-top:4px;">Erstkontakt &amp; Bedarfsanalyse</p>
+          </div>
+          <div class="p-6 md:p-8 grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="font-bold text-base mb-3">Erreichbarkeit</h3>
+              <p class="text-[#E0E0E0] text-sm mb-2">E-Mail: <a href="mailto:r.krieg.home@gmail.com" class="text-[#8FA5C7] hover:text-white">r.krieg.home@gmail.com</a><br><span class="text-xs text-[#C0C0C0]">(vorläufige Adresse)</span></p>
+              <p class="text-[#E0E0E0] text-sm mb-2">Telefonische Erreichbarkeit — folgt</p>
+              <p class="text-[#E0E0E0] text-sm">35232 Dautphetal</p>
+            </div>
+            <form id="ae-contact-form">
+              <label class="block text-sm font-semibold mb-3">
+                Name
+                <input type="text" id="ae-cf-name" class="ae-input" placeholder="Ihr Name" required>
+              </label>
+              <label class="block text-sm font-semibold mb-3">
+                E-Mail
+                <input type="email" id="ae-cf-email" class="ae-input" placeholder="ihre-adresse@beispiel.de" required>
+              </label>
+              <label class="block text-sm font-semibold mb-4">
+                Nachricht
+                <textarea id="ae-cf-message" class="ae-textarea" placeholder="Ihr Anliegen …" required></textarea>
+              </label>
+              <button type="submit" class="w-full" style="padding:15px; margin-top:6px; background:linear-gradient(135deg,#6B4423 0%,#B87333 16%,#6B4423 34%,#E8C39E 50%,#B87333 64%,#6B4423 82%,#E8C39E 100%); color:#131B27; border:none; border-radius:20px; font-size:16px; font-weight:bold; cursor:pointer;">✅ Nachricht per E-Mail vorbereiten</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="flex flex-col items-center justify-center gap-2 text-center text-[#C0C0C0] text-xs py-10 border-t border-[rgba(124,147,184,0.16)]">
+      <span class="ae-michroma text-sm relative inline-flex items-center" style="color:#FFFFFF; font-weight:800; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.5));">
+        <span class="ae-metallic">AERIS</span>
+      </span>
+      <span class="text-[10px] tracking-wide">Außerklinische Evidenzbasierte Respiratorische Intensivpflege Services</span>
+      <span>Inhaber: René Krieg, Dautphetal</span>
+      <div class="flex gap-4 mt-2 -my-3">
+        <button data-legal="ae-legal-impressum" class="hover:text-white transition-colors underline inline-flex items-center justify-center" style="padding:12px; min-width:44px; min-height:44px;">Impressum</button>
+        <button data-legal="ae-legal-datenschutz" class="hover:text-white transition-colors underline inline-flex items-center justify-center" style="padding:12px; min-width:44px; min-height:44px;">Datenschutz</button>
+      </div>
+    </footer>
+
+  </div><!-- /pt-20 -->
+
+  <button id="ae-scrolltop" class="ae-scrolltop" aria-label="Nach oben scrollen">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg>
+  </button>
+
+  <!-- Legal-Overlays (Struktur aus forma-web übernommen, Inhalt Platzhalter) -->
+  <div id="ae-legal-backdrop" class="ae-legal-backdrop"></div>
+  <section id="ae-legal-impressum" class="ae-legal-section ae-legal-hidden" role="dialog" aria-modal="true" aria-labelledby="ae-legal-impressum-title">
+    <div class="ae-card"><button class="ae-legal-close" aria-label="Schließen">✕</button>
+      <h2 id="ae-legal-impressum-title" class="text-xl font-bold mb-3">Impressum</h2>
+      <div class="ae-legal-body">
+        <h3>Angaben gemäß § 5 DDG (Digitale-Dienste-Gesetz)</h3>
+        <p>René Krieg<br>Hohenfelsstraße 34<br>35232 Dautphetal</p>
+        <h3>Kontakt</h3>
+        <p>Telefon: [Telefonnummer]<br>E-Mail: r.krieg.home@gmail.com</p>
+        <h3>Umsatzsteuer</h3>
+        <p>Es wird derzeit von der Kleinunternehmerregelung nach § 19 UStG Gebrauch gemacht bzw. deren Anwendbarkeit geprüft (Umsatzgrenzen: 25.000 € Vorjahresumsatz / 100.000 € laufendes Jahr). Es wird daher keine Umsatzsteuer ausgewiesen. Umsatzsteuer-Identifikationsnummer nach § 27a UStG: [USt-IdNr., sofern vorhanden / entfällt bei Kleinunternehmerregelung]</p>
+        <h3>Berufsbezeichnung und berufsrechtliche Angaben</h3>
+        <p>Berufsbezeichnung: Pflegefachkraft (verliehen in [Bundesland/Land der Ausbildung], gemäß Pflegeberufegesetz – PflBG)<br>Zuständige Aufsichtsbehörde für die Anerkennung der Berufsqualifikation: [zuständige Behörde, sofern einschlägig]<br>Für Pflegefachkräfte besteht in Hessen keine Pflegekammer mit gesetzlicher Pflichtmitgliedschaft (anders als z. B. in Rheinland-Pfalz oder Nordrhein-Westfalen); es gilt daher aktuell keine kammerrechtliche Berufsordnung im engeren Sinne.</p>
+        <h3>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h3>
+        <p>René Krieg, Hohenfelsstraße 34, 35232 Dautphetal</p>
+        <h3>Streitschlichtung</h3>
+        <p>Die EU-Plattform zur Online-Streitbeilegung wurde zum 20. Juli 2025 von der Europäischen Kommission eingestellt (Verordnung (EU) 2024/3228); ein entsprechender Link entfällt daher. Es besteht keine Verpflichtung und keine Bereitschaft, an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+        <h3>Haftungshinweis</h3>
+        <p>Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für die Inhalte externer Links. Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich.</p>
+      </div>
+    </div>
+  </section>
+  <section id="ae-legal-datenschutz" class="ae-legal-section ae-legal-hidden" role="dialog" aria-modal="true" aria-labelledby="ae-legal-datenschutz-title">
+    <div class="ae-card"><button class="ae-legal-close" aria-label="Schließen">✕</button>
+      <h2 id="ae-legal-datenschutz-title" class="text-xl font-bold mb-3">Datenschutz</h2>
+      <div class="ae-legal-body">
+        <h3>1. Verantwortlicher</h3>
+        <p>Verantwortlicher im Sinne der Datenschutz-Grundverordnung (DSGVO) ist:<br>René Krieg, Hohenfelsstraße 34, 35232 Dautphetal<br>Telefon: [Telefonnummer], E-Mail: r.krieg.home@gmail.com</p>
+        <h3>2. Allgemeines zur Datenverarbeitung</h3>
+        <p>Diese Website dient ausschließlich der allgemeinen Information über das Leistungsangebot der außerklinischen 1:1-Intensivpflege. Sie enthält kein Tracking, keine Analyse-Cookies und keine Einbindung von Drittanbieter-Diensten (z. B. Social-Media-Plugins, Werbenetzwerke). Beim Aufruf der Website werden ausschließlich die technisch durch den Hosting-Server automatisch erzeugten Zugriffsdaten (Server-Logfiles, z. B. IP-Adresse, Datum/Uhrzeit des Zugriffs, aufgerufene Seite, verwendeter Browser) kurzzeitig verarbeitet. Dies ist technisch zwingend erforderlich, um die Website auszuliefern und die Systemsicherheit zu gewährleisten (Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO, berechtigtes Interesse am störungsfreien und sicheren Betrieb der Website). Die Website ist als Progressive Web App (PWA) technisch vorbereitet; ein Service Worker ermöglicht das lokale Zwischenspeichern von Seiteninhalten im Browser des Besuchers für schnelleren Seitenaufbau und eingeschränkte Offline-Verfügbarkeit. Hierbei werden keine personenbezogenen Daten an Dritte übermittelt.</p>
+        <p>Hosting-Anbieter: [Name und Anschrift des Hosting-Anbieters]</p>
+        <h3>3. Kontaktaufnahme</h3>
+        <p>Diese Website enthält ein Kontaktformular für die Erstkontaktanfrage. Das Formular übermittelt die eingegebenen Daten technisch nicht an einen Server des Verantwortlichen; stattdessen öffnet es beim Absenden das lokal auf Ihrem Gerät hinterlegte E-Mail-Programm mit einer vorausgefüllten E-Mail an r.krieg.home@gmail.com. Der eigentliche Versand und damit die Übermittlung der eingegebenen Daten (z. B. Name, Anliegen) erfolgt erst, wenn Sie diese E-Mail über Ihr eigenes E-Mail-Konto aktiv absenden. Rechtsgrundlage für die anschließende Verarbeitung der über E-Mail übermittelten Daten ist Art. 6 Abs. 1 lit. b DSGVO (vorvertragliche Anfrage) bzw. Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Beantwortung von Anfragen). Alternativ können Sie uns direkt unter r.krieg.home@gmail.com oder [Telefonnummer] kontaktieren.</p>
+        <h3>4. Speicherdauer</h3>
+        <p>Server-Logfiles werden automatisiert nach kurzer Zeit gelöscht, soweit sie nicht zur Aufklärung eines konkreten Sicherheitsvorfalls benötigt werden. E-Mail-Korrespondenz aus einer Kontaktanfrage wird gelöscht, sobald sie zur Bearbeitung des Anliegens nicht mehr erforderlich ist, spätestens jedoch nach Ablauf gesetzlicher Aufbewahrungsfristen, sofern eine vertragliche Beziehung zustande kommt.</p>
+        <h3>5. Ihre Rechte</h3>
+        <p>Sie haben nach Maßgabe der Art. 15 bis 21 DSGVO das Recht auf Auskunft über die zu Ihrer Person gespeicherten Daten, auf Berichtigung unrichtiger Daten, auf Löschung, auf Einschränkung der Verarbeitung, auf Datenübertragbarkeit sowie das Recht, einer Verarbeitung, die auf Art. 6 Abs. 1 lit. f DSGVO gestützt ist, aus Gründen zu widersprechen, die sich aus Ihrer besonderen Situation ergeben. Zur Ausübung dieser Rechte genügt eine formlose Mitteilung an die oben genannten Kontaktdaten.</p>
+        <h3>6. Beschwerderecht</h3>
+        <p>Sie haben unbeschadet anderweitiger Rechtsbehelfe das Recht auf Beschwerde bei einer Datenschutzaufsichtsbehörde, insbesondere in dem Mitgliedstaat Ihres Aufenthaltsorts. Für René Krieg als Verantwortlichen zuständig ist voraussichtlich:<br>Der Hessische Beauftragte für Datenschutz und Informationsfreiheit, Postfach 31 63, 65021 Wiesbaden (Hausanschrift: Wilhelmstraße 7, 65185 Wiesbaden), Telefon: 0611 1408-0, E-Mail: poststelle@datenschutz.hessen.de<br>[Hinweis: Diese Zuständigkeit gilt, wenn der Unternehmenssitz tatsächlich in Hessen liegt — bitte vor Veröffentlichung anhand der finalen Geschäftsanschrift bestätigen.]</p>
+      </div>
+    </div>
+  </section>
+
+  <script src="app.js" defer></script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('./sw.js').catch(function (err) {
+        console.warn('Service Worker Registrierung fehlgeschlagen:', err);
+      });
+    });
+  }
+</script>
+<script>
+  // Auto-Reload fuer iOS-Home-Bildschirm-PWA: verhindert, dass beim erneuten
+  // Oeffnen eine gecachte Version (bfcache) statt des aktuellen Stands
+  // angezeigt wird — damit muss die App nicht mehr manuell neu angelegt werden.
+  window.addEventListener('pageshow', function (event) {
+    if (event.persisted) window.location.reload();
+  });
+  document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState !== 'visible') return;
+    fetch(location.href.split('?')[0] + '?v=' + Date.now(), { cache: 'no-store' })
+      .then(function (res) { return res.text(); })
+      .then(function (html) {
+        var m = html.match(/data-page-version="([\w-]+)"/);
+        if (m && m[1] !== document.documentElement.dataset.pageVersion) window.location.reload();
+      })
+      .catch(function () {});
+  });
+</script>
+
+</body>
+</html>
