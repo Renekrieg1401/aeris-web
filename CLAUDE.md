@@ -3,7 +3,7 @@
 > Genesis-Eintrag, nachträglich registriert nach `quality-management`-Befund „Silo wurde bearbeitet, nie registriert" (2026-10-02). Repo war bereits vor diesem Eintrag geklont und mit dem AERIS-Pool-Feature bebaut — dieser Eintrag holt die Registrierung nach, keine rückwirkende Neubewertung der bereits erfolgten Arbeit.
 
 ## Was ist AERIS Web
-Separates Repo `Renekrieg1401/aeris-web` — AERIS-Marketing-Landingpage für René/AERIS als freiberuflichen AKI (§18 Abs.1 Nr.1 EStG, `index.html:288`). Dark-Glassmorphism-Design, PWA (`manifest.json`+`sw.js`).
+Separates Repo `Renekrieg1401/aeris-web` — AERIS-Marketing-Landingpage. **Rechtsform-Update (2026-10-02):** AERIS firmiert jetzt als **AERIS GmbH i.G.** (Gesellschaft mit beschränkter Haftung in Gründung, noch nicht im Handelsregister eingetragen), René Krieg als Gründer/künftiger Geschäftsführer — löst die vorherige Einzelunternehmer-Konstruktion (§18 Abs.1 Nr.1 EStG) ab. Umgesetzt an 6 Stellen (Footer, Impressum, Datenschutz, Widerrufsbelehrung, Buchungs-Overlay, Vorteile-Karte), primärquellen-verifiziert (§11 Abs.2 GmbHG, Handelndenhaftung bis zur Eintragung), testing-qa+legal-compliance-gegenprüft. Dark-Glassmorphism-Design, PWA (`manifest.json`+`sw.js`).
 
 **Nicht zu verwechseln mit `Projekte/aeris/`** (AERIS Dokumentation + AERIS Buch, separates Repo `aeris-app-finanz`).
 

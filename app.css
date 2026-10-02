@@ -431,6 +431,17 @@ table{text-indent:0;border-color:inherit;border-collapse:collapse;}
   }
   .ae-legal-body p { font-size: var(--ae-font-sm); color: #E0E0E0; line-height: 1.5; }
 
+  /* Checkbox-Zeile + 44x44-Hit-Area — 1:1 aus pool/app.css (a11y-Fix
+     2026-10-02, WCAG 2.5.5 Target Size) uebernommen fuer das Buchungs-
+     Bestaetigungs-Overlay in index.html. */
+  .ae-checkbox-row { display: flex; align-items: flex-start; gap: .6rem; cursor: pointer; }
+  .ae-checkbox-row input[type="checkbox"] { width: 20px; height: 20px; accent-color: #E8C39E; flex-shrink: 0; }
+  .ae-checkbox-hit {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 44px; height: 44px; flex-shrink: 0; margin: -12px 0 -12px -12px;
+  }
+  button:disabled { opacity: .45; cursor: not-allowed; }
+
   /* Audience-Switch-Tabs (Pflegesuchend/Stellensuchend) — Header-Weiche
      zwischen Hauptseite (index.html) und AKI-Pool (pool/*.html), René-
      Direktive 2026-10-02. Nur bestehende Tokens (Bronze-Aktiv-Gradient aus
