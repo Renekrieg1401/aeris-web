@@ -1,0 +1,476 @@
+@font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:800;font-display:swap;src:url(data:font/woff2;base64,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) format('woff2');}
+
+/* Tailwind CDN entfernt (2026-09-19, Offline-Faehigkeit) — Design-Tokens (colors/spacing/radius/fontSize)
+     sind bereits als CSS-Variablen im :root-Block unten hinterlegt, die tatsaechlich genutzten Tailwind-
+     Utility-Klassen sind als eigene .ae-tw-utils-Regeln direkt darunter definiert (1:1 identisch mit
+     aeris-app-finanz/index.html, s. dortiger Kommentar "technisch identisch aufgebaut"). */
+/* Tailwind-Preflight (Minimal-Reset, 1:1 aus Tailwind v3 preflight.css uebernommen) — noetig, weil die Restklassen unten (box-sizing, Margin-0 auf Headings/Listen etc.) davon ausgehen. */
+*,::before,::after{box-sizing:border-box;border-width:0;border-style:solid;border-color:currentColor;}
+html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";}
+body{margin:0;line-height:inherit;}
+hr{height:0;color:inherit;border-top-width:1px;}
+abbr:where([title]){text-decoration:underline dotted;}
+h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit;margin:0;}
+a{color:inherit;text-decoration:inherit;}
+b,strong{font-weight:bolder;}
+button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;font-weight:inherit;line-height:inherit;color:inherit;margin:0;padding:0;}
+button,select{text-transform:none;}
+button,[type='button'],[type='reset'],[type='submit']{-webkit-appearance:button;background-color:transparent;background-image:none;}
+:-moz-focusring{outline:auto;}
+:-moz-ui-invalid{box-shadow:none;}
+progress{vertical-align:baseline;}
+::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto;}
+[type='search']{-webkit-appearance:textfield;outline-offset:-2px;}
+::-webkit-search-decoration{-webkit-appearance:none;}
+::-webkit-file-upload-button{-webkit-appearance:button;font:inherit;}
+summary{display:list-item;}
+blockquote,dl,dd,figure,pre{margin:0;}
+fieldset{margin:0;padding:0;}
+legend{padding:0;}
+ol,ul,menu{list-style:none;margin:0;padding:0;}
+textarea{resize:vertical;}
+input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af;}
+button,[role="button"]{cursor:pointer;}
+:disabled{cursor:default;}
+img,svg,video,canvas,audio,iframe,embed,object{display:block;vertical-align:middle;}
+img,video{max-width:100%;height:auto;}
+[hidden]{display:none;}
+table{text-indent:0;border-color:inherit;border-collapse:collapse;}
+/* Offline-Ersatz fuer Tailwind CDN (2026-09-19) — nur die tatsaechlich im Markup verwendeten Utility-Klassen, keine volle Tailwind-Reimplementierung. */
+.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
+.block{display:block;}
+.border-b{border-bottom-width:1px;}
+.border-t{border-top-width:1px;}
+.break-words{overflow-wrap:break-word;}
+.fixed{position:fixed;}
+.flex{display:flex;}
+.flex-1{flex:1 1 0%;}
+.flex-col{flex-direction:column;}
+.flex-shrink-0{flex-shrink:0;}
+.flex-wrap{flex-wrap:wrap;}
+.font-bold{font-weight:700;}
+.font-medium{font-weight:500;}
+.font-semibold{font-weight:600;}
+.grid{display:grid;}
+.grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr));}
+.grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr));}
+.grid-cols-7{grid-template-columns:repeat(7,minmax(0,1fr));}
+.h-5{height:1.25rem;}
+.h-7{height:1.75rem;}
+.h-20{height:5rem;}
+.hidden{display:none;}
+.inline-flex{display:inline-flex;}
+.inset-x-0{left:0;right:0;}
+.items-center{align-items:center;}
+.items-end{align-items:flex-end;}
+.items-start{align-items:flex-start;}
+.justify-between{justify-content:space-between;}
+.justify-center{justify-content:center;}
+.leading-relaxed{line-height:1.625;}
+.leading-snug{line-height:1.375;}
+.max-w-2xl{max-width:42rem;}
+.max-w-3xl{max-width:48rem;}
+.max-w-4xl{max-width:56rem;}
+.max-w-6xl{max-width:72rem;}
+.max-w-md{max-width:28rem;}
+.max-w-xl{max-width:36rem;}
+.max-w-xs{max-width:20rem;}
+.mb-1{margin-bottom:.25rem;}
+.mb-2{margin-bottom:.5rem;}
+.mb-3{margin-bottom:.75rem;}
+.mb-4{margin-bottom:1rem;}
+.mb-5{margin-bottom:1.25rem;}
+.mb-6{margin-bottom:1.5rem;}
+.mb-8{margin-bottom:2rem;}
+.mb-10{margin-bottom:2.5rem;}
+.ml-1{margin-left:.25rem;}
+.ml-2{margin-left:.5rem;}
+.ml-auto{margin-left:auto;}
+.mt-1{margin-top:.25rem;}
+.mt-2{margin-top:.5rem;}
+.mt-3{margin-top:.75rem;}
+.mt-4{margin-top:1rem;}
+.mt-5{margin-top:1.25rem;}
+.mt-8{margin-top:2rem;}
+.mx-auto{margin-left:auto;margin-right:auto;}
+.-mx-4{margin-left:-1rem;margin-right:-1rem;}
+.-my-3{margin-top:-.75rem;margin-bottom:-.75rem;}
+.overflow-x-auto{overflow-x:auto;}
+.p-5{padding:1.25rem;}
+.p-6{padding:1.5rem;}
+.pr-3{padding-right:.75rem;}
+.pr-10{padding-right:2.5rem;}
+.pt-2{padding-top:.5rem;}
+.pt-4{padding-top:1rem;}
+.pt-5{padding-top:1.25rem;}
+.pt-16{padding-top:4rem;}
+.pt-20{padding-top:5rem;}
+.px-4{padding-left:1rem;padding-right:1rem;}
+.px-5{padding-left:1.25rem;padding-right:1.25rem;}
+.px-6{padding-left:1.5rem;padding-right:1.5rem;}
+.py-2{padding-top:.5rem;padding-bottom:.5rem;}
+.py-3{padding-top:.75rem;padding-bottom:.75rem;}
+.py-3\.5{padding-top:.875rem;padding-bottom:.875rem;}
+.py-10{padding-top:2.5rem;padding-bottom:2.5rem;}
+.py-16{padding-top:4rem;padding-bottom:4rem;}
+.relative{position:relative;}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0;}
+.text-center{text-align:center;}
+.text-left{text-align:left;}
+.text-white{color:#FFFFFF;}
+.tracking-wide{letter-spacing:.025em;}
+.transition-colors{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s;}
+.underline{text-decoration-line:underline;}
+.uppercase{text-transform:uppercase;}
+.w-5{width:1.25rem;}
+.w-7{width:1.75rem;}
+.w-full{width:100%;}
+.whitespace-nowrap{white-space:nowrap;}
+.z-50{z-index:50;}
+.top-0{top:0;}
+.gap-1{gap:.25rem;}
+.gap-1\.5{gap:.375rem;}
+.gap-2{gap:.5rem;}
+.gap-3{gap:.75rem;}
+.gap-4{gap:1rem;}
+.gap-5{gap:1.25rem;}
+.gap-6{gap:1.5rem;}
+.gap-8{gap:2rem;}
+.text-xs{font-size:11px;}
+.text-sm{font-size:14px;}
+.text-base{font-size:1rem;line-height:1.5rem;}
+.text-lg{font-size:1.125rem;line-height:1.75rem;}
+.text-xl{font-size:1.25rem;line-height:1.75rem;}
+.text-2xl{font-size:1.5rem;line-height:2rem;}
+.bg-\[\#131B27\]{background-color:#131B27;}
+.border-\[rgba\(124\,147\,184\,0\.16\)\]{border-color:rgba(124,147,184,0.16);}
+.text-\[\#6E7B8F\]{color:#6E7B8F;}
+.text-\[\#7C93B8\]{color:#7C93B8;}
+.text-\[\#8FA5C7\]{color:#8FA5C7;}
+.text-\[\#9CADC9\]{color:#9CADC9;}
+.text-\[\#C0C0C0\]{color:#C0C0C0;}
+.text-\[\#E0E0E0\]{color:#E0E0E0;}
+.text-\[\#E8C39E\]{color:#E8C39E;}
+.text-\[10px\]{font-size:10px;}
+.min-w-\[160px\]{min-width:160px;}
+.accent-\[\#B8845A\]{accent-color:#B8845A;}
+.space-y-2 > * + *{margin-top:.5rem;}
+.space-y-3 > * + *{margin-top:.75rem;}
+.space-y-6 > * + *{margin-top:1.5rem;}
+.space-y-8 > * + *{margin-top:2rem;}
+
+/* hover:/focus: Varianten */
+.hover\:text-white:hover{color:#FFFFFF;}
+.focus\:bg-white:focus{background-color:#FFFFFF;}
+.focus\:fixed:focus{position:fixed;}
+.focus\:font-bold:focus{font-weight:700;}
+.focus\:left-2:focus{left:.5rem;}
+.focus\:not-sr-only:focus{position:static;width:auto;height:auto;padding:0;margin:0;overflow:visible;clip:auto;white-space:normal;}
+.focus\:px-4:focus{padding-left:1rem;padding-right:1rem;}
+.focus\:py-2:focus{padding-top:.5rem;padding-bottom:.5rem;}
+.focus\:rounded-md:focus{border-radius:.375rem;}
+.focus\:text-\[\#17273F\]:focus{color:#17273F;}
+.focus\:top-2:focus{top:.5rem;}
+.focus\:z-\[999\]:focus{z-index:999;}
+
+/* Responsive: sm >=640px */
+@media (min-width:640px){
+  .sm\:flex-row{flex-direction:row;}
+  .sm\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr));}
+}
+
+/* Responsive: md >=768px */
+@media (min-width:768px){
+  .md\:-mx-8{margin-left:-2rem;margin-right:-2rem;}
+  .md\:block{display:block;}
+  .md\:col-span-2{grid-column:span 2 / span 2;}
+  .md\:flex{display:flex;}
+  .md\:grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr));}
+  .md\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .md\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr));}
+  .md\:grid-cols-4{grid-template-columns:repeat(4,minmax(0,1fr));}
+  .md\:grid-cols-5{grid-template-columns:repeat(5,minmax(0,1fr));}
+  .md\:hidden{display:none;}
+  .md\:p-6{padding:1.5rem;}
+  .md\:p-8{padding:2rem;}
+  .md\:px-8{padding-left:2rem;padding-right:2rem;}
+  .md\:py-16{padding-top:4rem;padding-bottom:4rem;}
+  .md\:py-20{padding-top:5rem;padding-bottom:5rem;}
+  .md\:py-24{padding-top:6rem;padding-bottom:6rem;}
+  .md\:text-2xl{font-size:1.5rem;line-height:2rem;}
+  .md\:text-3xl{font-size:1.875rem;line-height:2.25rem;}
+  .md\:text-base{font-size:1rem;line-height:1.5rem;}
+  .md\:text-lg{font-size:1.125rem;line-height:1.75rem;}
+  .md\:text-sm{font-size:14px;}
+  .md\:text-xl{font-size:1.25rem;line-height:1.75rem;}
+}
+
+/* Responsive: lg >=1024px */
+@media (min-width:1024px){
+  .lg\:gap-6{gap:1.5rem;}
+}
+
+:root {
+    --ae-space-half: 4px; --ae-space-xs: 8px; --ae-space-sm: 12px; --ae-space-compact: 14px;
+    --ae-space-md: 16px; --ae-space-semi: 20px; --ae-space-lg: 24px; --ae-space-xl: 32px;
+    --ae-space-2xl: 40px; --ae-space-3xl: 48px; --ae-space-4xl: 64px;
+    --ae-radius-sm: 10px; --ae-radius-md: 16px; --ae-radius-lg: 22px; --ae-radius-pill: 20px; --ae-radius-full: 9999px;
+    --ae-font-xs: 11px; --ae-font-sm: 14px; --ae-font-chip: 13px; --ae-font-body: 16px; --ae-font-bodylg: 18px;
+    --ae-font-h3: 20px; --ae-font-h2: 24px; --ae-font-h1: 30px; --ae-font-display: 44px;
+  }
+  html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+  /* Wortmarke: Plus Jakarta Sans ExtraBold — gut lesbare, professionelle
+     geometrische Schrift, René-Direktive nach mehreren gescheiterten
+     Logo-Nachbau-Versuchen ("kreiere einen gut lesbaren Font der zum
+     Inhalt passt"), 2026-09-18. */
+  .ae-michroma { font-family: 'Plus Jakarta Sans', sans-serif; font-weight:800; letter-spacing: -0.01em; }
+
+  /* Metallischer Silber/Weiß-Glanz auf der Wortmarke, per background-clip:text
+     auf den Schriftzug. */
+  .ae-metallic {
+    background: linear-gradient(100deg,#8A8F99 0%,#F5F6F8 22%,#C8CDD6 38%,#8A8F99 52%,#F5F6F8 68%,#C8CDD6 84%,#8A8F99 100%);
+    background-clip: text; -webkit-background-clip: text;
+    color: transparent; -webkit-text-fill-color: transparent;
+  }
+
+  .ae-scrolltop {
+    position: fixed; right: 20px; bottom: 20px; z-index: 60;
+    width: 48px; height: 48px; border-radius: 9999px; border: 1px solid rgba(124,147,184,0.3);
+    background: linear-gradient(135deg, #3D4E6C, #263349); color: #FFFFFF;
+    display: flex; align-items: center; justify-content: center; cursor: pointer;
+    box-shadow: -4px -4px 10px rgba(255,255,255,0.2), 4px 4px 10px rgba(0,0,0,0.6);
+    opacity: 0; pointer-events: none; transform: translateY(8px);
+    transition: opacity .2s ease, transform .2s ease;
+  }
+  .ae-scrolltop--visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+
+  @keyframes ae-logo-breathe { 0%,100% { transform: scale(1); filter: drop-shadow(0 0 4px rgba(184,115,51,0.5)); } 50% { transform: scale(1.08); filter: drop-shadow(0 0 10px rgba(184,115,51,0.85)); } }
+  .ae-logo { transform-box: fill-box; transform-origin: center; animation: ae-logo-breathe 3.2s ease-in-out infinite; }
+
+  .ae-logo-glow-wrap { position: relative; display: inline-flex; }
+  .ae-logo-glow-wrap::before {
+    content: ''; position: absolute; inset: 0; border-radius: 9999px;
+    border: 2px solid rgba(124,147,184,0.16);
+    border-top-color: #D9D9D9; border-right-color: #D9D9D9;
+    box-shadow: 0 0 6px rgba(217,217,217,0.8);
+    animation: ae-glow-ring-spin 3.2s linear infinite;
+    pointer-events: none;
+  }
+  @keyframes ae-glow-ring-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+  /* Neumorphismus-Karte — 1:1 Formel aus forma-web .fw-card. Hover NUR
+     border-color, kein 3D-Tilt (Touch-Geräte, s. AERIS/CLAUDE.md). */
+  .ae-card {
+    position: relative;
+    background: linear-gradient(135deg, #303F58 0%, #253349 50%, #1A2536 100%);
+    border: 1px solid rgba(124,147,184,0.22);
+    border-radius: var(--ae-radius-lg);
+    box-shadow:
+      -3px -3px 8px rgba(255,255,255,0.12),
+      3px 3px 8px rgba(0,0,0,0.4),
+      inset 0 4px 12px rgba(255,255,255,0.14);
+    transition: border-color .2s ease;
+  }
+  .ae-card:hover { border-color: #7C93B8; }
+  .ae-card h3 { overflow-wrap: break-word; hyphens: auto; }
+
+  /* Kachel-Anordnung Qualifikation (5 Kacheln, grid md:grid-cols-3 wie alle
+     übrigen Sections) — vorherige flex-basis(280px)-Lösung brach bereits vor
+     dem md-Breakpoint (768px) auf 2 Spalten um (2+2+1 statt 3+2) und ergab
+     durch flex-grow unterschiedliche Kachelbreiten je Zeile. Jetzt gleiche
+     Spaltenbreite in jeder Zeile; 4. Kachel per grid-column-start zentriert
+     die letzte, unvollständige Zeile statt linksbündig hängenzubleiben. */
+  @media (min-width: 768px) {
+    .ae-tile-grid > *:nth-child(4) { grid-column-start: 2; }
+  }
+
+  /* Glassmorph-Kopfbereich (Hero + Einordnungsleiste) — semi-transparenter
+     Blauverlauf + Blur/Saturate statt Vollton, mit Glas-Randlicht. */
+  .ae-hero {
+    position: relative; overflow: hidden;
+    background: linear-gradient(100deg, rgba(43,69,112,0.55), rgba(23,39,63,0.65));
+    backdrop-filter: blur(18px) saturate(160%); -webkit-backdrop-filter: blur(18px) saturate(160%);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.18);
+    border-bottom: 1px solid rgba(255,255,255,0.14);
+  }
+  .ae-hero::before {
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(ellipse at 30% -10%, rgba(255,255,255,0.16), transparent 55%);
+  }
+  .ae-hero::after {
+    content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+  }
+  .ae-glass-strip {
+    background: rgba(37,49,68,0.45);
+    backdrop-filter: blur(18px) saturate(160%); -webkit-backdrop-filter: blur(18px) saturate(160%);
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+  }
+
+  /* Header-Verlauf = echtes gradientCareDark aus der Forma-App (DesignTokens.ts),
+     nicht nur dunkles Glas — mit Transparenz, damit Blur weiter durchscheint. */
+  .ae-header {
+    position: relative;
+    background: linear-gradient(100deg, rgba(43,69,112,0.78), rgba(23,39,63,0.82));
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(124,147,184,0.16);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.45);
+  }
+  .ae-header::after {
+    content: ''; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.65), transparent);
+    pointer-events: none;
+  }
+
+  .ae-menu-btn {
+    width: 44px; height: 44px; border-radius: 9999px;
+    background: rgba(19,27,39,0.4); border: 1px solid rgba(124,147,184,0.16);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+    cursor: pointer; transition: border-color .2s ease;
+  }
+  .ae-menu-btn span { width: 18px; height: 2px; background: #FFFFFF; border-radius: 2px; }
+  .ae-menu-btn:hover { border-color: #7C93B8; }
+
+  /* Offcanvas-Sidebar — 1:1 Struktur-Vorlage aus forma-web .fw-sidebar*
+     (Breite/Blur/Backdrop/Slide), René-Direktive. Ersetzt das vorige
+     einfache Dropdown-Mobile-Menü. */
+  .ae-sidebar {
+    position: fixed; top: 0; right: 0; height: 100vh; width: 300px; max-width: 85vw;
+    z-index: 100; transform: translateX(100%);
+    transition: transform .3s cubic-bezier(.22,1,.36,1);
+    background: linear-gradient(180deg, rgba(43,69,112,0.62), rgba(23,39,63,0.78));
+    backdrop-filter: blur(24px) saturate(140%); -webkit-backdrop-filter: blur(24px) saturate(140%);
+    display: flex; flex-direction: column; overflow-y: auto;
+    border-left: 1px solid rgba(255,255,255,0.14);
+    box-shadow: -22px 0 40px rgba(0,0,0,0.5);
+  }
+  .ae-sidebar.ae-sidebar--open { transform: translateX(0); }
+  .ae-sidebar-brand {
+    display: flex; align-items: center; gap: .75rem; padding: 1.25rem 1rem;
+    background: linear-gradient(100deg, #2B4570, #17273F);
+  }
+  /* a11y-Fix 2026-09-18: Sidebar-Brand-Hintergrund ist dunkler als Header/Footer,
+     der globale .ae-metallic-Dunkelstopp (#8A8F99) fiel dort auf 2,96:1 (< 4,5:1).
+     Scoped Override NUR hier: heller/kontrastreicherer Dunkelstopp (#B0B5BF),
+     globaler .ae-metallic-Gradient (Header/Footer) bleibt unveraendert. */
+  .ae-sidebar-brand .ae-metallic {
+    background: linear-gradient(100deg,#B0B5BF 0%,#F5F6F8 22%,#C8CDD6 38%,#B0B5BF 52%,#F5F6F8 68%,#C8CDD6 84%,#B0B5BF 100%);
+    background-clip: text; -webkit-background-clip: text;
+  }
+  .ae-sidebar-backdrop {
+    position: fixed; inset: 0; z-index: 90;
+    background: rgba(0,0,0,0.45); opacity: 0; pointer-events: none;
+    transition: opacity .3s ease;
+  }
+  .ae-sidebar-backdrop.ae-sidebar-backdrop--visible { opacity: 1; pointer-events: auto; }
+  .ae-sidebar-close {
+    min-width: 44px; min-height: 44px; display: flex; align-items: center; justify-content: center;
+    background: none; border: none; color: #FFFFFF; font-size: 1.25rem; cursor: pointer; margin-left: auto;
+  }
+  .ae-sidebar-nav { display: flex; flex-direction: column; padding: .75rem 1rem 1.5rem; }
+  .ae-sidebar-nav a { padding: .85rem .25rem; color: #E0E0E0; font-weight: 600; font-size: .9rem; text-decoration: none; border-bottom: 1px solid rgba(124,147,184,0.12); }
+  .ae-sidebar-nav a:last-child { border-bottom: none; margin-top: .5rem; }
+
+  .ae-btn-primary {
+    background: linear-gradient(135deg,#6B4423 0%,#B87333 16%,#6B4423 34%,#E8C39E 50%,#B87333 64%,#6B4423 82%,#E8C39E 100%);
+    color: #131B27; font-weight: 700; border-radius: var(--ae-radius-md);
+    padding: .8rem 1.4rem; text-align: center; border: none; cursor: pointer; text-decoration: none;
+    box-shadow: -4px -4px 10px rgba(255,255,255,0.16), 4px 4px 10px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.25);
+    transition: opacity .2s ease, transform .15s ease, box-shadow .15s ease; display: inline-block;
+  }
+  .ae-btn-primary:hover { opacity: .92; }
+  .ae-btn-primary:active { transform: scale(0.97); box-shadow: inset -3px -3px 8px rgba(255,255,255,0.12), inset 3px 3px 8px rgba(0,0,0,0.55); }
+  .ae-btn-secondary {
+    background: linear-gradient(135deg, #2C3A50, #202B3D); color: #E0E0E0; font-weight: 600; border-radius: var(--ae-radius-md);
+    padding: .8rem 1.4rem; text-align: center; border: 1px solid rgba(124,147,184,0.3); cursor: pointer;
+    box-shadow: -4px -4px 10px rgba(255,255,255,0.08), 4px 4px 10px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.12);
+    text-decoration: none; display: inline-block; transition: border-color .2s ease, box-shadow .15s ease;
+  }
+  .ae-btn-secondary:hover { border-color: #7C93B8; }
+  .ae-btn-secondary:active { box-shadow: inset -3px -3px 8px rgba(255,255,255,0.06), inset 3px 3px 8px rgba(0,0,0,0.5); }
+
+  .ae-badge {
+    display: inline-block; border-radius: var(--ae-radius-full); padding: .2rem .75rem;
+    font-size: var(--ae-font-xs); font-weight: 700; color: #FFFFFF; margin-bottom: .6rem;
+    /* Zwei dunkle Bronze-Stopps statt drei — #E8C39E entfernt, da kein flacher
+       Textton gegen alle drei Stopps gleichzeitig 4.5:1 erreicht (WCAG-Fix). */
+    background: linear-gradient(135deg, #6B4423, #96683A);
+  }
+
+  .ae-num-circle {
+    width: 42px; height: 42px; border-radius: 9999px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, #6B4423, #96683A);
+    box-shadow: -3px -3px 8px rgba(255,255,255,0.22), 3px 3px 8px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.3);
+    color: #FFFFFF; font-weight: 800; font-size: var(--ae-font-h3);
+    margin-bottom: .75rem;
+  }
+
+  /* Sunken/eingelassenes Eingabefeld — 1:1 aus Arbeits-Zeitnachweis (.tages-zeit-feld/#tagesBemerkung),
+     René-Referenz "so soll der Kontakt aussehen". */
+  .ae-input, .ae-textarea {
+    width: 100%; margin-top: .35rem;
+    background: #253144; border: 1px solid rgba(124,147,184,0.16);
+    border-radius: 14px; padding: .9rem; color: #FFFFFF; font-size: var(--ae-font-sm);
+    box-shadow: inset 4px 4px 7px rgba(0,0,0,0.65), inset -3px -3px 6px rgba(232,195,158,0.55);
+  }
+  .ae-textarea { min-height: 110px; resize: vertical; }
+  .ae-input::placeholder, .ae-textarea::placeholder { color: #7C93B8; }
+
+  /* Legal-Overlay — 1:1 Mechanik aus forma-web .fw-legal-*. */
+  .ae-legal-hidden { display: none; }
+  .ae-legal-section { position: fixed; inset: 0; z-index: 200; display: flex; align-items: center; justify-content: center; padding: 1.5rem; }
+  .ae-legal-section.ae-legal-hidden { display: none; }
+  .ae-legal-section .ae-card { max-height: 80vh; overflow-y: auto; position: relative; width: 100%; max-width: 640px; padding: 2rem; }
+  .ae-legal-backdrop { position: fixed; inset: 0; z-index: 190; background: rgba(0,0,0,0.55); opacity: 0; pointer-events: none; transition: opacity .3s ease; }
+  .ae-legal-backdrop.ae-legal-backdrop--visible { opacity: 1; pointer-events: auto; }
+  .ae-legal-close {
+    min-width: 44px; min-height: 44px; display: flex; align-items: center; justify-content: center;
+    background: none; border: none; color: #FFFFFF; font-size: 1.25rem; cursor: pointer;
+    position: absolute; top: .5rem; right: .5rem;
+  }
+
+  /* AKI-Pool-Ergänzungen (frontend-ui, 2026-10-02) — funktional notwendig, keine
+     neue Palette: .ae-select nutzt exakt die .ae-input-Sunken-Optik; Status-/
+     Fehlerfarbe lehnt sich an das globale IRIS-Digital-Signal-Rot (Root-CLAUDE.md
+     "Signal-Rot #D32F2F") an, da AERIS selbst kein Error-Token besitzt. */
+  .ae-select {
+    width: 100%; margin-top: .35rem; appearance: none;
+    background: #253144 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%237C93B8' stroke-width='2.4'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 1rem center;
+    border: 1px solid rgba(124,147,184,0.16); border-radius: 14px; padding: .9rem 2.4rem .9rem .9rem;
+    color: #FFFFFF; font-size: var(--ae-font-sm); cursor: pointer;
+    box-shadow: inset 4px 4px 7px rgba(0,0,0,0.65), inset -3px -3px 6px rgba(232,195,158,0.55);
+  }
+  .ae-select option { background: #1A2536; color: #FFFFFF; }
+  /* a11y-Fix 2026-10-02 (accessibility-a11y-Audit): accent-color von Bronze
+     #B87333 (nur 2,80:1 gg. #303F58, < 3:1-Pflicht WCAG 1.4.11) auf den
+     bereits gesealten helleren Bronze-Ton #E8C39E (Teil von .ae-btn-primary)
+     angehoben — 6,44:1/7,72:1/9,35:1 gg. alle 3 Card-Gradient-Stopps, kein
+     neuer Farbwert. */
+  .ae-checkbox-row { display: flex; align-items: flex-start; gap: .6rem; cursor: pointer; }
+  .ae-checkbox-row input[type="checkbox"] { width: 20px; height: 20px; accent-color: #E8C39E; flex-shrink: 0; }
+  /* a11y-Fix 2026-10-02: unsichtbare 44x44-Hit-Area um die 20px-Checkbox
+     (WCAG 2.5.5 Target Size), rein per negativem Margin/Flex nach außen
+     erweitert — keine optische Änderung der sichtbaren Box. */
+  .ae-checkbox-hit {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 44px; height: 44px; flex-shrink: 0; margin: -12px 0 -12px -12px;
+  }
+  /* a11y-Fix 2026-10-02 (accessibility-a11y-Audit): #F08A8A erreichte nur
+     4,40:1 gg. den hellsten Card-Gradient-Stopp (#303F58, < 4,5:1-Pflicht) —
+     gleicher Rot-/Warnton, nur aufgehellt (L 0.74→~0.84), jetzt 5,01:1/
+     6,01:1/7,27:1 gg. alle 3 Stopps. */
+  .ae-field-error { color: #F59999; font-size: var(--ae-font-xs); margin-top: .35rem; display: block; }
+  .ae-notice-banner {
+    background: rgba(184,115,51,0.14); border: 1px solid rgba(184,115,51,0.4); border-radius: var(--ae-radius-md);
+    padding: .9rem 1.1rem; font-size: var(--ae-font-sm); color: #E0E0E0; margin-bottom: 1.25rem;
+  }
+  /* Korrektur (Selbstkorrektur 2026-10-02): urspruenglich faelschlich ADEA-Mint
+     (#5DCFB4, fremde Produktpalette) verwendet — ersetzt durch AERIS-eigenen
+     Bronze-Ton (#E8C39E, bereits Teil des .ae-btn-primary-Gradienten), keine
+     neue Palette. */
+  .ae-success-banner {
+    background: rgba(232,195,158,0.14); border: 1px solid rgba(232,195,158,0.45); border-radius: var(--ae-radius-md);
+    padding: 1rem 1.2rem; font-size: var(--ae-font-sm); color: #E0E0E0;
+  }
+  .ae-legal-body p { font-size: var(--ae-font-sm); color: #E0E0E0; line-height: 1.5; }

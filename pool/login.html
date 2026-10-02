@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="de" data-page-version="2026-10-02-001">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Login | AERIS AKI-Pool</title>
+<meta name="theme-color" content="#2B4570">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="app.css">
+</head>
+<body class="bg-[#131B27] text-white antialiased">
+
+  <header class="ae-header fixed top-0 inset-x-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 md:px-8 h-20 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-2">
+        <span class="ae-michroma text-xl tracking-wide relative inline-flex items-center" style="font-weight:800;"><span class="ae-metallic">AERIS</span></span>
+        <span class="ae-badge" style="margin:0 0 0 8px;">AKI-Pool</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-[#E0E0E0]">
+        <a href="index.html" class="hover:text-white transition-colors">Pool durchsuchen</a>
+        <a href="registrieren.html" class="hover:text-white transition-colors">Registrieren</a>
+        <a href="login.html" class="hover:text-white transition-colors text-white font-bold">Login</a>
+        <a href="kalender.html" class="hover:text-white transition-colors">Kalender</a>
+      </nav>
+      <button id="ae-menu-toggle" class="ae-menu-btn md:hidden" aria-label="Menü öffnen" aria-expanded="false" aria-controls="ae-sidebar">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <aside id="ae-sidebar" class="ae-sidebar" aria-hidden="true">
+    <div class="ae-sidebar-brand">
+      <span class="ae-michroma text-base tracking-wide relative inline-flex items-center" style="font-weight:800;"><span class="ae-metallic">AERIS</span></span>
+      <button id="ae-sidebar-close" class="ae-sidebar-close" aria-label="Navigation schließen">✕</button>
+    </div>
+    <nav class="ae-sidebar-nav">
+      <a href="index.html">Pool durchsuchen</a>
+      <a href="registrieren.html">Registrieren</a>
+      <a href="login.html">Login</a>
+      <a href="kalender.html">Kalender</a>
+      <a href="../index.html">Zur Hauptseite</a>
+    </nav>
+  </aside>
+  <div id="ae-sidebar-backdrop" class="ae-sidebar-backdrop"></div>
+
+  <div class="pt-20">
+    <main class="max-w-md mx-auto px-4 md:px-8 py-10 md:py-16">
+      <h1 class="ae-michroma text-xl md:text-2xl mb-4" style="color:#E8C39E;">Login per Magic-Link</h1>
+
+      <div class="ae-notice-banner">
+        Ihre E-Mail-Adresse wird ausschließlich zur Zusendung des Magic-Links und zur
+        Konto-Zuordnung verwendet (Art. 6 Abs. 1 lit. b DSGVO, Vertragsdurchführung).
+        <a href="../index.html#ae-legal-datenschutz" class="underline hover:text-white">Ausführliche Datenschutzerklärung</a>.
+      </div>
+
+      <div class="ae-notice-banner">
+        Demo/Scaffold-Hinweis: Es gibt noch keinen echten Mailversand. Der Magic-Link
+        erscheint nach dem Anfordern ausschließlich im Server-Terminal-Log
+        (<code>[Magic-Link] Für …</code>) — bitte dort nachsehen und den Link öffnen.
+      </div>
+
+      <div id="ae-login-step-request" class="ae-card p-6 md:p-8">
+        <label class="block text-sm font-semibold mb-4">E-Mail (bei der Registrierung verwendet) *
+          <input type="email" id="ae-login-email" class="ae-input" required>
+        </label>
+        <button id="ae-login-request-btn" type="button" class="ae-btn-primary w-full" style="padding:15px;">Magic-Link anfordern</button>
+        <p id="ae-login-request-msg" class="ae-field-error" style="display:none; margin-top:1rem;" role="alert"></p>
+        <p id="ae-login-request-success" class="ae-success-banner" style="display:none; margin-top:1rem;" role="status"></p>
+      </div>
+
+      <div id="ae-login-step-verify" class="ae-card p-6 md:p-8" style="display:none;">
+        <p id="ae-login-verify-msg" class="text-[#C0C0C0] text-sm" aria-live="polite">Link wird geprüft …</p>
+      </div>
+    </main>
+  </div>
+
+  <script src="app.js" defer></script>
+  <script defer>
+    document.addEventListener('DOMContentLoaded', async function () {
+      var params = new URLSearchParams(window.location.search);
+      var token = params.get('token');
+
+      if (token) {
+        document.getElementById('ae-login-step-request').style.display = 'none';
+        var verifyStep = document.getElementById('ae-login-step-verify');
+        var verifyMsg = document.getElementById('ae-login-verify-msg');
+        verifyStep.style.display = 'block';
+
+        var result = await window.aerisPoolFetch('/api/auth/magic-link-verifizieren?token=' + encodeURIComponent(token));
+        if (result.networkError) {
+          verifyMsg.textContent = 'Server nicht erreichbar (Backend unter ' + window.AERIS_POOL_API_BASE + ' muss laufen).';
+          return;
+        }
+        if (!result.ok) {
+          var code = result.data && result.data.error;
+          verifyMsg.textContent = code === 'token_abgelaufen'
+            ? 'Der Link ist abgelaufen (15 Minuten gültig) — bitte neu anfordern.'
+            : 'Der Link ist ungültig oder wurde bereits verwendet — bitte neu anfordern.';
+          return;
+        }
+        sessionStorage.setItem(window.AERIS_POOL_SESSION_KEY, result.data.sessionToken);
+        verifyMsg.textContent = 'Erfolgreich eingeloggt — Weiterleitung zum Kalender …';
+        window.location.href = 'kalender.html';
+        return;
+      }
+
+      document.getElementById('ae-login-request-btn').addEventListener('click', async function () {
+        var email = document.getElementById('ae-login-email').value;
+        var msgEl = document.getElementById('ae-login-request-msg');
+        var successEl = document.getElementById('ae-login-request-success');
+        msgEl.style.display = 'none'; successEl.style.display = 'none';
+
+        var result = await window.aerisPoolFetch('/api/auth/magic-link-anfordern', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: email }),
+        });
+        if (result.networkError) {
+          msgEl.textContent = 'Server nicht erreichbar (Backend unter ' + window.AERIS_POOL_API_BASE + ' muss laufen).';
+          msgEl.style.display = 'block';
+          return;
+        }
+        if (!result.ok) {
+          var code = result.data && result.data.error;
+          msgEl.textContent = code === 'account_nicht_gefunden_bitte_zuerst_registrieren'
+            ? 'Kein Account zu dieser E-Mail — bitte zuerst registrieren.'
+            : 'Fehler: ' + (code || result.status);
+          msgEl.style.display = 'block';
+          return;
+        }
+        successEl.textContent = 'Magic-Link wurde "versendet" — siehe Server-Terminal-Log für den Link (kein echter Mailversand im Scaffold-Stadium).';
+        successEl.style.display = 'block';
+      });
+    });
+  </script>
+</body></html>

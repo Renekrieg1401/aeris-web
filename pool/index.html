@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="de" data-page-version="2026-10-02-001">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AKI-Pool — Honorar-Pflegefachkräfte finden | AERIS</title>
+<meta name="theme-color" content="#2B4570">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="app.css">
+</head>
+<body class="bg-[#131B27] text-white antialiased">
+
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[999] focus:bg-white focus:text-[#17273F] focus:px-4 focus:py-2 focus:rounded-md focus:font-bold">Zum Inhalt springen</a>
+
+  <header class="ae-header fixed top-0 inset-x-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 md:px-8 h-20 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-2">
+        <div class="ae-logo-glow-wrap">
+          <svg width="44" height="44" viewBox="0 0 100 100" role="img" aria-label="AERIS-Logo" class="ae-logo">
+            <defs>
+              <linearGradient id="aeRingPoolHeader" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#6B4423"/><stop offset="16%" stop-color="#B87333"/>
+                <stop offset="34%" stop-color="#6B4423"/><stop offset="50%" stop-color="#E8C39E"/>
+                <stop offset="64%" stop-color="#B87333"/><stop offset="82%" stop-color="#6B4423"/>
+                <stop offset="100%" stop-color="#E8C39E"/>
+              </linearGradient>
+            </defs>
+            <circle cx="51.8" cy="51.8" r="40" fill="none" stroke="#D9D9D9" stroke-opacity="0.45" stroke-width="12"/>
+            <circle cx="50" cy="50" r="40" fill="none" stroke="url(#aeRingPoolHeader)" stroke-width="12"/>
+            <circle cx="50" cy="50" r="45" fill="none" stroke="#FFFFFF" stroke-width="2.2"/>
+            <circle cx="50" cy="50" r="35" fill="none" stroke="#FFFFFF" stroke-width="2.2"/>
+            <path d="M 10 50 A 40 40 0 0 1 50 10" fill="none" stroke="#FFFFFF" stroke-opacity="0.55" stroke-width="6.6" stroke-linecap="round"/>
+            <path d="M 90 50 A 40 40 0 0 1 50 90" fill="none" stroke="#D9D9D9" stroke-opacity="0.5" stroke-width="6.6" stroke-linecap="round"/>
+            <path d="M 20 63 C 26 63, 28 37, 35 37 C 40 37, 42 63, 48 63 C 54 63, 56 37, 63 37 C 68 37, 70 63, 80 63"
+                  fill="none" stroke="url(#aeRingPoolHeader)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span class="ae-michroma text-xl tracking-wide relative inline-flex items-center" style="font-weight:800; filter: drop-shadow(0 3px 3px rgba(0,0,0,0.55));">
+          <span class="ae-metallic">AERIS</span>
+        </span>
+        <span class="ae-badge" style="margin:0 0 0 8px;">AKI-Pool</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-[#E0E0E0]">
+        <a href="index.html" class="hover:text-white transition-colors text-white font-bold">Pool durchsuchen</a>
+        <a href="registrieren.html" class="hover:text-white transition-colors">Registrieren</a>
+        <a href="login.html" class="hover:text-white transition-colors">Login</a>
+        <a href="kalender.html" class="hover:text-white transition-colors">Kalender</a>
+      </nav>
+      <div class="hidden md:block">
+        <a href="registrieren.html" class="ae-btn-primary text-sm px-5 py-3.5">Als AKI registrieren</a>
+      </div>
+      <button id="ae-menu-toggle" class="ae-menu-btn md:hidden" aria-label="Menü öffnen" aria-expanded="false" aria-controls="ae-sidebar">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <aside id="ae-sidebar" class="ae-sidebar" aria-hidden="true">
+    <div class="ae-sidebar-brand">
+      <span class="ae-michroma text-base tracking-wide relative inline-flex items-center" style="font-weight:800;">
+        <span class="ae-metallic">AERIS</span>
+      </span>
+      <button id="ae-sidebar-close" class="ae-sidebar-close" aria-label="Navigation schließen">✕</button>
+    </div>
+    <nav class="ae-sidebar-nav">
+      <a href="index.html">Pool durchsuchen</a>
+      <a href="registrieren.html">Registrieren</a>
+      <a href="login.html">Login</a>
+      <a href="kalender.html">Kalender</a>
+      <a href="../index.html">Zur Hauptseite</a>
+    </nav>
+  </aside>
+  <div id="ae-sidebar-backdrop" class="ae-sidebar-backdrop"></div>
+
+  <div class="pt-20">
+    <main id="main-content" class="max-w-6xl mx-auto px-4 md:px-8 py-10 md:py-16">
+      <h1 class="ae-michroma text-xl md:text-2xl mb-2" style="color:#E8C39E;">Honorar-AKI-Pool</h1>
+      <p class="text-[#C0C0C0] text-sm max-w-2xl mb-8">Freigeschaltete Profile selbstständiger Pflegefachkräfte in der außerklinischen Intensivpflege. Alle Profile wurden vor Veröffentlichung von einem Admin geprüft.</p>
+
+      <div class="ae-glass-strip rounded-2xl p-4 md:p-5 flex flex-col md:flex-row gap-3 mb-8">
+        <label class="flex-1 text-xs font-semibold text-[#9CADC9]">
+          Bundesland
+          <select id="ae-filter-bundesland" class="ae-select"><option value="">Alle Bundesländer</option></select>
+        </label>
+        <label class="flex-1 text-xs font-semibold text-[#9CADC9]">
+          Stellenbeschreibung
+          <select id="ae-filter-stelle" class="ae-select"><option value="">Alle Kategorien</option></select>
+        </label>
+        <div class="flex items-end">
+          <button id="ae-filter-reset" type="button" class="ae-btn-secondary text-sm">Filter zurücksetzen</button>
+        </div>
+      </div>
+
+      <p id="ae-pool-status" class="text-[#9CADC9] text-sm mb-4" aria-live="polite">Profile werden geladen …</p>
+      <div id="ae-pool-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+
+      <div class="ae-card p-6 mt-12 text-center max-w-xl mx-auto">
+        <h2 class="font-bold text-base mb-2 text-white">Sie sind selbstständige Pflegefachkraft?</h2>
+        <p class="text-[#C0C0C0] text-sm mb-4">Legen Sie jetzt Ihr Profil an — nach kurzer Admin-Prüfung erscheinen Sie hier im Pool.</p>
+        <a href="registrieren.html" class="ae-btn-primary">Jetzt registrieren</a>
+      </div>
+    </main>
+
+    <footer class="flex flex-col items-center justify-center gap-2 text-center text-[#C0C0C0] text-xs py-10 border-t border-[rgba(124,147,184,0.16)]">
+      <span class="ae-michroma text-sm relative inline-flex items-center" style="color:#FFFFFF; font-weight:800;">
+        <span class="ae-metallic">AERIS</span>
+      </span>
+      <span>Inhaber: René Krieg, Dautphetal</span>
+      <div class="flex gap-4 mt-2 -my-3">
+        <a href="../index.html" class="hover:text-white transition-colors underline inline-flex items-center justify-center" style="padding:12px; min-width:44px; min-height:44px;">Impressum &amp; Datenschutz (Hauptseite)</a>
+      </div>
+    </footer>
+  </div>
+
+  <script src="app.js" defer></script>
+  <script defer>
+    document.addEventListener('DOMContentLoaded', function () {
+      var blSelect = document.getElementById('ae-filter-bundesland');
+      window.AERIS_BUNDESLAENDER.forEach(function (bl) {
+        var opt = document.createElement('option'); opt.value = bl; opt.textContent = bl; blSelect.appendChild(opt);
+      });
+      var stelleSelect = document.getElementById('ae-filter-stelle');
+      Object.keys(window.AERIS_STELLENBESCHREIBUNG_LABELS).forEach(function (key) {
+        var opt = document.createElement('option'); opt.value = key; opt.textContent = window.AERIS_STELLENBESCHREIBUNG_LABELS[key];
+        stelleSelect.appendChild(opt);
+      });
+
+      var statusEl = document.getElementById('ae-pool-status');
+      var gridEl = document.getElementById('ae-pool-grid');
+
+      function renderProfile(p) {
+        var zertis = (p.zertifizierungen || []).map(function (z) {
+          return '<span class="ae-badge" style="margin-right:6px;">' + z + '</span>';
+        }).join('');
+        var kontaktZeilen = '<a href="mailto:' + p.kontaktdaten.email + '" class="text-[#8FA5C7] hover:text-white">' + p.kontaktdaten.email + '</a>';
+        if (p.kontaktdaten.telefon) kontaktZeilen += '<br>' + p.kontaktdaten.telefon;
+        return '<div class="ae-card p-6">' +
+          '<h3 class="font-bold text-base mb-1 text-white">' + p.name + '</h3>' +
+          '<p class="text-[#9CADC9] text-xs mb-2">' + p.berufsbezeichnung + ' · ' + p.bundesland + '</p>' +
+          '<p class="text-[#C0C0C0] text-sm leading-relaxed mb-3">' + p.persoenlicheBeschreibung + '</p>' +
+          '<p class="mb-2">' + zertis + '</p>' +
+          '<p class="text-[#C0C0C0] text-xs mb-2">' + (window.AERIS_STELLENBESCHREIBUNG_LABELS[p.stellenbeschreibung] || p.stellenbeschreibung) + ' · ' + (p.rechtsform === 'gmbh' ? 'GmbH' : 'Freiberuflich') + '</p>' +
+          (p.portfolio ? '<p class="text-[#C0C0C0] text-xs mb-2">Portfolio: ' + p.portfolio + '</p>' : '') +
+          '<p class="text-[#E0E0E0] text-sm mt-3">' + kontaktZeilen + '</p>' +
+        '</div>';
+      }
+
+      async function loadPool() {
+        statusEl.textContent = 'Profile werden geladen …';
+        var params = new URLSearchParams();
+        if (blSelect.value) params.set('bundesland', blSelect.value);
+        if (stelleSelect.value) params.set('stellenbeschreibung', stelleSelect.value);
+        var qs = params.toString();
+        var result = await window.aerisPoolFetch('/api/aki/pool' + (qs ? '?' + qs : ''));
+        if (result.networkError) {
+          statusEl.textContent = 'Server nicht erreichbar (Demo/Scaffold-Hinweis: Backend unter ' + window.AERIS_POOL_API_BASE + ' muss laufen, ggf. CORS-Block im lokalen Scaffold).';
+          gridEl.innerHTML = '';
+          return;
+        }
+        if (!result.ok) {
+          statusEl.textContent = 'Fehler beim Laden des Pools.';
+          gridEl.innerHTML = '';
+          return;
+        }
+        var profile = result.data.profile || [];
+        statusEl.textContent = profile.length + ' freigeschaltete Profil(e) gefunden.';
+        gridEl.innerHTML = profile.length ? profile.map(renderProfile).join('') :
+          '<p class="text-[#9CADC9] text-sm">Noch keine freigeschalteten Profile in dieser Auswahl.</p>';
+      }
+
+      blSelect.addEventListener('change', loadPool);
+      stelleSelect.addEventListener('change', loadPool);
+      document.getElementById('ae-filter-reset').addEventListener('click', function () {
+        blSelect.value = ''; stelleSelect.value = ''; loadPool();
+      });
+      loadPool();
+    });
+  </script>
+</body></html>

@@ -126,6 +126,14 @@
         if (target) openLegal(target, btn);
       });
     });
+    // Deep-Link-Support (Art. 13 DSGVO / §5 DDG): externer Aufruf mit
+    // #ae-legal-impressum/-datenschutz (z. B. von pool/registrieren.html,
+    // pool/login.html, pool/kalender.html) oeffnet das Overlay sofort beim
+    // Laden — reuse von openLegal(), analog aeris/app.js:143-148.
+    if (location.hash === '#ae-legal-impressum' || location.hash === '#ae-legal-datenschutz') {
+      var hashTarget = document.getElementById(location.hash.slice(1));
+      if (hashTarget) openLegal(hashTarget, null);
+    }
 
     // ---------- Kontaktformular (mailto-Fallback, kein Backend) ----------
     var contactForm = document.getElementById('ae-contact-form');

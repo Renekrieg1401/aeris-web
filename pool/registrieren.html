@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="de" data-page-version="2026-10-02-001">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Als Honorar-AKI registrieren | AERIS AKI-Pool</title>
+<meta name="theme-color" content="#2B4570">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="app.css">
+</head>
+<body class="bg-[#131B27] text-white antialiased">
+
+  <header class="ae-header fixed top-0 inset-x-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 md:px-8 h-20 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-2">
+        <span class="ae-michroma text-xl tracking-wide relative inline-flex items-center" style="font-weight:800;">
+          <span class="ae-metallic">AERIS</span>
+        </span>
+        <span class="ae-badge" style="margin:0 0 0 8px;">AKI-Pool</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-[#E0E0E0]">
+        <a href="index.html" class="hover:text-white transition-colors">Pool durchsuchen</a>
+        <a href="registrieren.html" class="hover:text-white transition-colors text-white font-bold">Registrieren</a>
+        <a href="login.html" class="hover:text-white transition-colors">Login</a>
+        <a href="kalender.html" class="hover:text-white transition-colors">Kalender</a>
+      </nav>
+      <button id="ae-menu-toggle" class="ae-menu-btn md:hidden" aria-label="Menü öffnen" aria-expanded="false" aria-controls="ae-sidebar">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <aside id="ae-sidebar" class="ae-sidebar" aria-hidden="true">
+    <div class="ae-sidebar-brand">
+      <span class="ae-michroma text-base tracking-wide relative inline-flex items-center" style="font-weight:800;"><span class="ae-metallic">AERIS</span></span>
+      <button id="ae-sidebar-close" class="ae-sidebar-close" aria-label="Navigation schließen">✕</button>
+    </div>
+    <nav class="ae-sidebar-nav">
+      <a href="index.html">Pool durchsuchen</a>
+      <a href="registrieren.html">Registrieren</a>
+      <a href="login.html">Login</a>
+      <a href="kalender.html">Kalender</a>
+      <a href="../index.html">Zur Hauptseite</a>
+    </nav>
+  </aside>
+  <div id="ae-sidebar-backdrop" class="ae-sidebar-backdrop"></div>
+
+  <div class="pt-20">
+    <main class="max-w-2xl mx-auto px-4 md:px-8 py-10 md:py-16">
+      <h1 class="ae-michroma text-xl md:text-2xl mb-4" style="color:#E8C39E;">Als Honorar-AKI registrieren</h1>
+
+      <div class="ae-notice-banner">
+        <strong>Hinweis zur Datenerhebung (Art. 13 DSGVO):</strong> Verantwortlicher ist
+        René Krieg, Hohenfelsstraße 34, 35232 Dautphetal, r.krieg.home@gmail.com. Die
+        unten abgefragten Angaben werden zur Prüfung und Vermittlung im AERIS-AKI-Pool
+        erhoben (Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO, Vertragsanbahnung). Nach
+        Admin-Freischaltung werden die Angaben, denen Sie unten gesondert zustimmen,
+        für andere Pool-Nutzer sichtbar. Speicherung erfolgt, solange Ihr Profil aktiv
+        ist, bis zur Löschung auf Ihren Wunsch. <a href="../index.html#ae-legal-datenschutz" class="underline hover:text-white">Ausführliche Datenschutzerklärung</a>.
+      </div>
+
+      <div class="ae-notice-banner">
+        Hinweis: Ihr Profil erscheint <strong>nicht sofort</strong> öffentlich. Es wird zunächst
+        von einem Admin geprüft und erst nach Freischaltung im AKI-Pool angezeigt.
+      </div>
+
+      <div id="ae-reg-success" class="ae-success-banner" style="display:none;" role="status"></div>
+      <div id="ae-reg-error" class="ae-field-error" style="display:none; margin-bottom:1rem;" role="alert"></div>
+
+      <form id="ae-reg-form" class="ae-card p-6 md:p-8">
+        <label class="block text-sm font-semibold mb-3">Name *
+          <input type="text" id="ae-reg-name" class="ae-input" required>
+        </label>
+        <label class="block text-sm font-semibold mb-3">Berufsbezeichnung *
+          <input type="text" id="ae-reg-beruf" class="ae-input" placeholder="z. B. Pflegefachkraft" required>
+        </label>
+        <label class="block text-sm font-semibold mb-3">Zertifizierungen (kommagetrennt)
+          <input type="text" id="ae-reg-zertis" class="ae-input" placeholder="z. B. Fachweiterbildung Intensiv, Beatmungsschein">
+        </label>
+        <label class="block text-sm font-semibold mb-3">E-Mail *
+          <input type="email" id="ae-reg-email" class="ae-input" required>
+        </label>
+        <label class="block text-sm font-semibold mb-3">Telefon
+          <input type="tel" id="ae-reg-telefon" class="ae-input">
+        </label>
+        <label class="block text-sm font-semibold mb-3">Rechtsform *
+          <select id="ae-reg-rechtsform" class="ae-select" required>
+            <option value="freiberuflich">Freiberuflich</option>
+            <option value="gmbh">GmbH</option>
+          </select>
+        </label>
+        <label class="block text-sm font-semibold mb-3">Portfolio (Link oder Hinweis)
+          <input type="text" id="ae-reg-portfolio" class="ae-input">
+        </label>
+        <label class="block text-sm font-semibold mb-3">Persönliche Beschreibung *
+          <textarea id="ae-reg-beschreibung" class="ae-textarea" required></textarea>
+        </label>
+        <label class="block text-sm font-semibold mb-3">Bundesland *
+          <select id="ae-reg-bundesland" class="ae-select" required><option value="">Bitte wählen</option></select>
+        </label>
+        <label class="block text-sm font-semibold mb-4">Stellenbeschreibung *
+          <select id="ae-reg-stelle" class="ae-select" required><option value="">Bitte wählen</option></select>
+        </label>
+        <!-- a11y-Fix 2026-10-02: 20px-Checkbox hatte nur eine 20x20px-Klickfläche
+             (< 44x44px-Pflicht). Statt der Box selbst eine unsichtbare 44x44-Hit-
+             Area (.ae-checkbox-hit, app.css) hinzugefügt + ganze Zeile in ein
+             einziges <label> gewandelt (Klick überall in der Zeile toggelt). -->
+        <label class="ae-checkbox-row mb-5" for="ae-reg-einwilligung">
+          <span class="ae-checkbox-hit"><input type="checkbox" id="ae-reg-einwilligung"></span>
+          <span class="text-sm">
+            Ich willige ein, dass mein Profil mit den oben angegebenen Daten öffentlich im AKI-Pool
+            angezeigt wird, sobald es von einem Admin freigeschaltet wurde. *
+          </span>
+        </label>
+        <button type="submit" class="ae-btn-primary w-full" style="padding:15px;">Profil anlegen</button>
+      </form>
+    </main>
+  </div>
+
+  <script src="app.js" defer></script>
+  <script defer>
+    document.addEventListener('DOMContentLoaded', function () {
+      var blSelect = document.getElementById('ae-reg-bundesland');
+      window.AERIS_BUNDESLAENDER.forEach(function (bl) {
+        var opt = document.createElement('option'); opt.value = bl; opt.textContent = bl; blSelect.appendChild(opt);
+      });
+      var stelleSelect = document.getElementById('ae-reg-stelle');
+      Object.keys(window.AERIS_STELLENBESCHREIBUNG_LABELS).forEach(function (key) {
+        var opt = document.createElement('option'); opt.value = key; opt.textContent = window.AERIS_STELLENBESCHREIBUNG_LABELS[key];
+        stelleSelect.appendChild(opt);
+      });
+
+      var form = document.getElementById('ae-reg-form');
+      var successEl = document.getElementById('ae-reg-success');
+      var errorEl = document.getElementById('ae-reg-error');
+
+      var ERROR_LABELS = {
+        einwilligung_oeffentliches_profil_erforderlich: 'Die Einwilligung zur öffentlichen Profil-Anzeige ist Pflicht — bitte Häkchen setzen.',
+        pflichtfelder_fehlen: 'Bitte alle Pflichtfelder (Name, Berufsbezeichnung, Beschreibung) ausfüllen.',
+        kontaktdaten_email_erforderlich: 'Bitte eine gültige E-Mail-Adresse angeben.',
+        rechtsform_ungueltig: 'Bitte eine gültige Rechtsform wählen.',
+        bundesland_ungueltig: 'Bitte ein gültiges Bundesland wählen.',
+        stellenbeschreibung_ungueltig: 'Bitte eine gültige Stellenbeschreibung wählen.',
+        email_bereits_registriert: 'Diese E-Mail-Adresse ist bereits registriert — bitte über Login einloggen.',
+      };
+
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        errorEl.style.display = 'none';
+        successEl.style.display = 'none';
+
+        var zertis = document.getElementById('ae-reg-zertis').value
+          .split(',').map(function (z) { return z.trim(); }).filter(Boolean);
+
+        var payload = {
+          name: document.getElementById('ae-reg-name').value,
+          berufsbezeichnung: document.getElementById('ae-reg-beruf').value,
+          zertifizierungen: zertis,
+          kontaktdaten: {
+            email: document.getElementById('ae-reg-email').value,
+            telefon: document.getElementById('ae-reg-telefon').value || undefined,
+          },
+          rechtsform: document.getElementById('ae-reg-rechtsform').value,
+          portfolio: document.getElementById('ae-reg-portfolio').value || undefined,
+          persoenlicheBeschreibung: document.getElementById('ae-reg-beschreibung').value,
+          bundesland: document.getElementById('ae-reg-bundesland').value,
+          stellenbeschreibung: document.getElementById('ae-reg-stelle').value,
+          einwilligungOeffentlichesProfil: document.getElementById('ae-reg-einwilligung').checked,
+        };
+
+        var result = await window.aerisPoolFetch('/api/aki/registrieren', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+
+        if (result.networkError) {
+          errorEl.textContent = 'Server nicht erreichbar (Demo/Scaffold-Hinweis: Backend unter ' + window.AERIS_POOL_API_BASE + ' muss laufen, ggf. CORS-Block im lokalen Scaffold).';
+          errorEl.style.display = 'block';
+          return;
+        }
+        if (!result.ok) {
+          var code = result.data && result.data.error;
+          errorEl.textContent = ERROR_LABELS[code] || ('Fehler: ' + (code || result.status));
+          errorEl.style.display = 'block';
+          return;
+        }
+        successEl.textContent = 'Profil angelegt — wartet auf Admin-Freischaltung. Sie erhalten keine automatische Benachrichtigung im Scaffold-Stadium.';
+        successEl.style.display = 'block';
+        form.style.display = 'none';
+      });
+    });
+  </script>
+</body></html>

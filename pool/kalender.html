@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="de" data-page-version="2026-10-02-001">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Verfügbarkeits-Kalender | AERIS AKI-Pool</title>
+<meta name="theme-color" content="#2B4570">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="app.css">
+<script>
+  // Vor dem ersten Render pruefen, ob eine Session existiert — sonst sofortiger
+  // Redirect zu login.html (geschlossener Bereich, kein Flash sichtbarer Inhalte).
+  if (!sessionStorage.getItem('aeris_pool_session_token')) {
+    window.location.replace('login.html');
+  }
+</script>
+</head>
+<body class="bg-[#131B27] text-white antialiased">
+
+  <header class="ae-header fixed top-0 inset-x-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 md:px-8 h-20 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-2">
+        <span class="ae-michroma text-xl tracking-wide relative inline-flex items-center" style="font-weight:800;"><span class="ae-metallic">AERIS</span></span>
+        <span class="ae-badge" style="margin:0 0 0 8px;">AKI-Pool</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-[#E0E0E0]">
+        <a href="index.html" class="hover:text-white transition-colors">Pool durchsuchen</a>
+        <a href="registrieren.html" class="hover:text-white transition-colors">Registrieren</a>
+        <a href="login.html" class="hover:text-white transition-colors">Login</a>
+        <a href="kalender.html" class="hover:text-white transition-colors text-white font-bold">Kalender</a>
+      </nav>
+      <div class="hidden md:block">
+        <button id="ae-logout-btn" type="button" class="ae-btn-secondary text-sm px-5 py-3.5">Logout</button>
+      </div>
+      <button id="ae-menu-toggle" class="ae-menu-btn md:hidden" aria-label="Menü öffnen" aria-expanded="false" aria-controls="ae-sidebar">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <aside id="ae-sidebar" class="ae-sidebar" aria-hidden="true">
+    <div class="ae-sidebar-brand">
+      <span class="ae-michroma text-base tracking-wide relative inline-flex items-center" style="font-weight:800;"><span class="ae-metallic">AERIS</span></span>
+      <button id="ae-sidebar-close" class="ae-sidebar-close" aria-label="Navigation schließen">✕</button>
+    </div>
+    <nav class="ae-sidebar-nav">
+      <a href="index.html">Pool durchsuchen</a>
+      <a href="registrieren.html">Registrieren</a>
+      <a href="login.html">Login</a>
+      <a href="kalender.html">Kalender</a>
+      <a href="#" id="ae-sidebar-logout">Logout</a>
+    </nav>
+  </aside>
+  <div id="ae-sidebar-backdrop" class="ae-sidebar-backdrop"></div>
+
+  <div class="pt-20">
+    <main class="max-w-5xl mx-auto px-4 md:px-8 py-10 md:py-16">
+      <h1 class="ae-michroma text-xl md:text-2xl mb-2" style="color:#E8C39E;">Verfügbarkeits-Kalender</h1>
+      <p class="text-[#C0C0C0] text-sm max-w-2xl mb-8">Alle Verfügbarkeitseinträge aller eingeloggten AKI-Accounts — ungefiltert sichtbar für jeden eingeloggten Nutzer (Architekturentscheidung des Backend-Scaffolds).</p>
+
+      <div class="ae-notice-banner">
+        Ihre Kalendereinträge werden zur Vermittlung im AERIS-AKI-Pool verarbeitet und
+        sind für alle eingeloggten Pool-Nutzer sichtbar (Art. 6 Abs. 1 lit. b DSGVO,
+        Vertragsdurchführung). <a href="../index.html#ae-legal-datenschutz" class="underline hover:text-white">Ausführliche Datenschutzerklärung</a>.
+      </div>
+
+      <section class="ae-card p-6 mb-10">
+        <h2 class="font-bold text-base mb-4 text-white">Neuen Eintrag anlegen</h2>
+        <form id="ae-kal-form" class="grid md:grid-cols-2 gap-4">
+          <label class="block text-sm font-semibold">Von *
+            <input type="date" id="ae-kal-von" class="ae-input" required>
+          </label>
+          <label class="block text-sm font-semibold">Bis *
+            <input type="date" id="ae-kal-bis" class="ae-input" required>
+          </label>
+          <label class="block text-sm font-semibold md:col-span-2">Art *
+            <select id="ae-kal-art" class="ae-select" required>
+              <option value="springerVertretung">Springer-Vertretung gesucht</option>
+              <option value="weitereStammkraftGesucht">Weitere Stammkraft gesucht</option>
+            </select>
+          </label>
+          <label class="block text-sm font-semibold md:col-span-2">Notiz
+            <textarea id="ae-kal-notiz" class="ae-textarea"></textarea>
+          </label>
+          <div class="md:col-span-2">
+            <button type="submit" class="ae-btn-primary">Eintrag anlegen</button>
+          </div>
+        </form>
+        <p id="ae-kal-form-error" class="ae-field-error" style="display:none; margin-top:.75rem;" role="alert"></p>
+      </section>
+
+      <p id="ae-kal-status" class="text-[#9CADC9] text-sm mb-4" aria-live="polite">Einträge werden geladen …</p>
+      <div id="ae-kal-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </main>
+  </div>
+
+  <script src="app.js" defer></script>
+  <script defer>
+    document.addEventListener('DOMContentLoaded', function () {
+      var SESSION_KEY = window.AERIS_POOL_SESSION_KEY;
+      var token = sessionStorage.getItem(SESSION_KEY);
+      if (!token) { window.location.replace('login.html'); return; }
+
+      function authHeaders() {
+        return { 'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json' };
+      }
+      function doLogout() {
+        sessionStorage.removeItem(SESSION_KEY);
+        window.location.href = 'login.html';
+      }
+      document.getElementById('ae-logout-btn').addEventListener('click', doLogout);
+      document.getElementById('ae-sidebar-logout').addEventListener('click', function (e) { e.preventDefault(); doLogout(); });
+
+      var statusEl = document.getElementById('ae-kal-status');
+      var gridEl = document.getElementById('ae-kal-grid');
+
+      function renderEintrag(e) {
+        return '<div class="ae-card p-6">' +
+          '<p class="ae-badge">' + (window.AERIS_KALENDER_ART_LABELS[e.art] || e.art) + '</p>' +
+          '<p class="text-white font-bold text-sm mb-1">' + e.datumVon + ' – ' + e.datumBis + '</p>' +
+          (e.notiz ? '<p class="text-[#C0C0C0] text-sm">' + e.notiz + '</p>' : '') +
+          '<p class="text-[#7C93B8] text-xs mt-2">Account: ' + e.akiAccountId.slice(0, 8) + '…</p>' +
+        '</div>';
+      }
+
+      async function loadKalender() {
+        statusEl.textContent = 'Einträge werden geladen …';
+        var result = await window.aerisPoolFetch('/api/kalender', { headers: authHeaders() });
+        if (result.networkError) {
+          statusEl.textContent = 'Server nicht erreichbar (Backend unter ' + window.AERIS_POOL_API_BASE + ' muss laufen).';
+          return;
+        }
+        if (result.status === 401) { doLogout(); return; }
+        if (!result.ok) { statusEl.textContent = 'Fehler beim Laden der Einträge.'; return; }
+        var eintraege = result.data.eintraege || [];
+        statusEl.textContent = eintraege.length + ' Eintrag/Einträge insgesamt.';
+        gridEl.innerHTML = eintraege.length ? eintraege.map(renderEintrag).join('') :
+          '<p class="text-[#9CADC9] text-sm">Noch keine Verfügbarkeitseinträge vorhanden.</p>';
+      }
+
+      document.getElementById('ae-kal-form').addEventListener('submit', async function (e) {
+        e.preventDefault();
+        var errorEl = document.getElementById('ae-kal-form-error');
+        errorEl.style.display = 'none';
+        var payload = {
+          datumVon: document.getElementById('ae-kal-von').value,
+          datumBis: document.getElementById('ae-kal-bis').value,
+          art: document.getElementById('ae-kal-art').value,
+          notiz: document.getElementById('ae-kal-notiz').value || undefined,
+        };
+        var result = await window.aerisPoolFetch('/api/kalender/eintrag', {
+          method: 'POST', headers: authHeaders(), body: JSON.stringify(payload),
+        });
+        if (result.networkError) {
+          errorEl.textContent = 'Server nicht erreichbar.'; errorEl.style.display = 'block'; return;
+        }
+        if (result.status === 401) { doLogout(); return; }
+        if (!result.ok) {
+          errorEl.textContent = 'Fehler: ' + (result.data && result.data.error || result.status);
+          errorEl.style.display = 'block';
+          return;
+        }
+        document.getElementById('ae-kal-form').reset();
+        loadKalender();
+      });
+
+      loadKalender();
+    });
+  </script>
+</body></html>
