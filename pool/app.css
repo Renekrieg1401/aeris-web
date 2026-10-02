@@ -474,3 +474,36 @@ table{text-indent:0;border-color:inherit;border-collapse:collapse;}
     padding: 1rem 1.2rem; font-size: var(--ae-font-sm); color: #E0E0E0;
   }
   .ae-legal-body p { font-size: var(--ae-font-sm); color: #E0E0E0; line-height: 1.5; }
+
+  /* Audience-Switch-Tabs (Pflegesuchend/Stellensuchend) — Header-Weiche
+     zwischen Hauptseite (../index.html) und AKI-Pool (diese Seite), René-
+     Direktive 2026-10-02. Identischer Block wie in der Root-app.css (jeder
+     Unterordner hat eine eigene Kopie, s. frontend-ui-Rollen-Gedächtnis). */
+  .ae-audience-tabs {
+    display: flex; align-items: center; gap: .2rem; padding: .2rem;
+    border-radius: var(--ae-radius-full);
+    background: rgba(19,27,39,0.4); border: 1px solid rgba(124,147,184,0.16);
+  }
+  .ae-audience-tab {
+    padding: .4rem .85rem; border-radius: var(--ae-radius-full);
+    font-size: var(--ae-font-xs); font-weight: 700; color: #E0E0E0;
+    text-decoration: none; white-space: nowrap;
+    transition: background .2s ease, color .2s ease;
+  }
+  .ae-audience-tab:hover { color: #FFFFFF; }
+  /* a11y-Fix 2026-10-02 (accessibility-a11y-Audit): Non-Text-Kontrast (WCAG 1.4.11)
+     der Bronze-Fuellung reicht gegen beide komposite Header-Hintergruende
+     (#1E2F49/#152133) an mehreren Gradient-Positionen nicht an 3:1 heran (1,59–2,78:1
+     am dunklen Ende). Fuellung bewusst unveraendert (Text-Kontrast #FFFFFF darauf ist
+     bereits ueberall >=4,5:1, 4,84–8,48:1 — nicht anfassen). Stattdessen zusaetzlicher,
+     fuellfarbenunabhaengiger Rand aus dem bereits gesealten Bronze-Mid-Token (#B87333,
+     s. Root-CLAUDE.md Design-Token-Masterübersicht) als eigenstaendiger Aktiv-Indikator:
+     3,55:1 (#1E2F49) / 4,27:1 (#152133), beides >=3:1, flache Farbe = an jeder Position
+     identisch. inset box-shadow statt border, um keinen Layout-Shift zu erzeugen. */
+  .ae-audience-tab--active { background: linear-gradient(135deg, #6B4423, #96683A); color: #FFFFFF; box-shadow: inset 0 0 0 2px #B87333; }
+  .ae-sidebar-nav .ae-audience-tabs { margin: 0 .25rem .75rem; border-bottom: none; }
+  /* a11y-Fix 2026-10-02: Touch-Target (WCAG 2.5.5) war bei .55rem Vertikal-Padding nur
+     ~34,1px hoch (11px*1.5 Zeilenhoehe + 2x8,8px). .9rem Vertikal-Padding ergibt
+     14,4px*2 + 16,5px = 45,3px, sicher ueber der 44px-Mindesthoehe. Nur Sidebar-Variante
+     betroffen, Desktop-Header-Variante bewusst unveraendert (Maus-bedient). */
+  .ae-sidebar-nav .ae-audience-tabs a { flex: 1; text-align: center; padding: .9rem .4rem; border-bottom: none; }

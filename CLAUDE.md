@@ -34,3 +34,5 @@ Neues Feature unter `/pool/` — Registrierung + Suche/Filter-Pool für freiberu
 - Verbesserungshinweis (nicht blockierend): eigener AKI-Pool-Abschnitt in der Haupt-Datenschutzerklärung.
 
 **AERIS-Pool-Feature: VOLLSTÄNDIG DURCH DEN GESCHLOSSENEN REGELKREIS (2026-10-02).** Alle Verify-Schritte (testing-qa ×2, accessibility-a11y ×2, quality-management, legal-compliance ×2) unabhängig bestanden.
+
+**Header-Tabs „Pflegesuchend"/„Stellensuchend" (Nachtrag 2026-10-02):** Zielgruppen-Weiche im Header aller 5 Seiten (`index.html` + 4× `pool/*.html`), ersetzt den alten Einzel-„AKI-Pool"-Link. Aktiv-Zustand per `aria-current="page"` + Bronze-Markierung. Verify-Kette: `testing-qa` PASS (Navigation/Mobile/Konsole) → `accessibility-a11y` fand 2 Verstöße (Non-Text-Kontrast aktive Füllung, Touch-Target Sidebar) → `frontend-ui`-Fix (Bronze-Ring `#B87333` statt Füllungsänderung, da Text- und Non-Text-Kontrast mathematisch nicht gleichzeitig per Gradient lösbar; Sidebar-Padding erhöht) → `accessibility-a11y`-Gegenprüfung mit vollständigem Gradient-Sweep bestätigt. Fall geschlossen.
