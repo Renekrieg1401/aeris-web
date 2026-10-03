@@ -20,12 +20,7 @@ const STORE_PATH = path.join(__dirname, 'data', 'store.json');
 
 const PORT = process.env.PORT || 3010;
 const BASE_URL = process.env.BASE_URL || `http://localhost:${PORT}`;
-const ADMIN_SECRET = process.env.ADMIN_SECRET;
 const MAGIC_LINK_TTL_MS = 15 * 60 * 1000; // 15 Minuten, s. René-Vorgabe
-
-if (!ADMIN_SECRET) {
-  console.error('ADMIN_SECRET fehlt — .env aus .env.example anlegen. Server startet trotzdem, /api/admin/freischalten liefert 503.');
-}
 
 // ---------------------------------------------------------------------------
 // Enums (exakt nach product-design-Vorgabe, keine Zusatzwerte)
@@ -38,7 +33,6 @@ const BUNDESLAENDER = [
   'Schleswig-Holstein', 'Thüringen',
 ];
 const STELLENBESCHREIBUNG = ['sucheStammkunde', 'bieteStammkunde', 'sucheSpringer', 'bieteSpringer', 'mixStelle'];
-const FREIGABE_STATUS = ['pending', 'approved', 'rejected'];
 const KALENDER_ART = ['springerVertretung', 'weitereStammkraftGesucht'];
 
 // ---------------------------------------------------------------------------
@@ -71,12 +65,12 @@ const app = express();
 // (z.B. origin: ['https://aeris-web.example'] statt true).
 app.use(cors({
   origin: true,
-  allowedHeaders: ['Content-Type', 'Authorization', 'x-admin-secret'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 app.use(express.json());
 
 app.get('/api/health', (_req, res) => {
-  res.json({ status: 'ok', adminConfigured: Boolean(ADMIN_SECRET) });
+  res.json({ status: 'ok' });
 });
 
 // ---------------------------------------------------------------------------
@@ -143,9 +137,8 @@ app.post('/api/aki/registrieren', (req, res) => {
     persoenlicheBeschreibung,
     bundesland,
     stellenbeschreibung,
-    // Admin-Review-Pflicht (Architekturentscheidung 2): startet immer als 'pending',
-    // erscheint erst nach Freischaltung im öffentlichen Pool-Endpoint.
-    freigabeStatus: 'pending',
+    // Kein Admin-Freischaltungs-Gate (René-Direktive 2026-10-02: "jeder AKI kann
+    // sich anmelden") — Profil ist sofort nach Registrierung im Pool sichtbar.
     einwilligungOeffentlichesProfil: true,
     createdAt: new Date().toISOString(),
   };
@@ -162,40 +155,20 @@ app.post('/api/aki/registrieren', (req, res) => {
 
   return res.status(201).json({
     status: 'registriert',
-    message: 'Profil angelegt, wartet auf Admin-Freischaltung (freigabeStatus: pending).',
+    message: 'Profil angelegt und sofort im öffentlichen Pool sichtbar (kein Admin-Freischaltungsschritt).',
     profilId,
   });
 });
 
 // ---------------------------------------------------------------------------
-// GET /api/aki/pool — nur freigabeStatus:'approved', filterbar
+// GET /api/aki/pool — alle registrierten Profile, filterbar (kein Freigabe-Gate)
 // ---------------------------------------------------------------------------
 app.get('/api/aki/pool', (req, res) => {
   const { bundesland, stellenbeschreibung } = req.query;
-  let ergebnis = store.akiProfile.filter((p) => p.freigabeStatus === 'approved');
+  let ergebnis = store.akiProfile;
   if (bundesland) ergebnis = ergebnis.filter((p) => p.bundesland === bundesland);
   if (stellenbeschreibung) ergebnis = ergebnis.filter((p) => p.stellenbeschreibung === stellenbeschreibung);
   res.json({ anzahl: ergebnis.length, profile: ergebnis });
-});
-
-// ---------------------------------------------------------------------------
-// POST /api/admin/freischalten — Admin-Secret-geschützt
-// ---------------------------------------------------------------------------
-app.post('/api/admin/freischalten', (req, res) => {
-  if (!ADMIN_SECRET) return res.status(503).json({ error: 'admin_secret_not_configured' });
-  const gegeben = req.headers['x-admin-secret'];
-  if (gegeben !== ADMIN_SECRET) return res.status(403).json({ error: 'admin_secret_ungueltig' });
-
-  const { profilId, freigabeStatus } = req.body || {};
-  if (!profilId || !FREIGABE_STATUS.includes(freigabeStatus) || freigabeStatus === 'pending') {
-    return res.status(400).json({ error: 'profilId_und_freigabeStatus_approved_oder_rejected_erforderlich' });
-  }
-  const profil = store.akiProfile.find((p) => p.id === profilId);
-  if (!profil) return res.status(404).json({ error: 'profil_nicht_gefunden' });
-
-  profil.freigabeStatus = freigabeStatus;
-  saveStore(store);
-  res.json({ status: 'aktualisiert', profilId, freigabeStatus });
 });
 
 // ---------------------------------------------------------------------------

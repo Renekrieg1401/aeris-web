@@ -60,19 +60,19 @@
     <main class="max-w-2xl mx-auto px-4 md:px-8 py-10 md:py-16">
       <h1 class="ae-michroma text-xl md:text-2xl mb-4" style="color:#E8C39E;">Als Honorar-AKI registrieren</h1>
 
-      <div class="ae-notice-banner">
-        <strong>Hinweis zur Datenerhebung (Art. 13 DSGVO):</strong> Verantwortlicher ist
-        René Krieg, Hohenfelsstraße 34, 35232 Dautphetal, r.krieg.home@gmail.com. Die
-        unten abgefragten Angaben werden zur Prüfung und Vermittlung im AERIS-AKI-Pool
-        erhoben (Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO, Vertragsanbahnung). Nach
-        Admin-Freischaltung werden die Angaben, denen Sie unten gesondert zustimmen,
-        für andere Pool-Nutzer sichtbar. Speicherung erfolgt, solange Ihr Profil aktiv
-        ist, bis zur Löschung auf Ihren Wunsch. <a href="../index.html#ae-legal-datenschutz" class="underline hover:text-white">Ausführliche Datenschutzerklärung</a>.
+      <div class="ae-card p-6 md:p-8 mb-6">
+        <h2 class="ae-michroma text-lg md:text-xl mb-4" style="color:#E8C39E;">Warum sich die Registrierung im AERIS-Pool lohnt</h2>
+        <p class="text-[#C0C0C0] text-sm md:text-base leading-relaxed">AERIS übernimmt nicht Ihre Anträge oder Ihre Bürokratie — das regeln Sie als Selbstständige oder Selbstständiger weiterhin eigenständig. Was AERIS leistet: Wir machen Ihr Profil für Klient:innen über unsere Such- und Filterfunktion auffindbar. Klient:innen suchen und finden Fachkräfte dort selbst; wir empfehlen ihnen diese Suche und unterstützen sie bei ihrer Entscheidung — Auswahl und Beauftragung treffen sie eigenständig.</p>
       </div>
 
       <div class="ae-notice-banner">
-        Hinweis: Ihr Profil erscheint <strong>nicht sofort</strong> öffentlich. Es wird zunächst
-        von einem Admin geprüft und erst nach Freischaltung im AKI-Pool angezeigt.
+        <strong>Hinweis zur Datenerhebung (Art. 13 DSGVO):</strong> Verantwortlicher ist
+        René Krieg, Hohenfelsstraße 34, 35232 Dautphetal, r.krieg.home@gmail.com. Die
+        unten abgefragten Angaben werden zur Vermittlung im AERIS-AKI-Pool
+        erhoben (Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO, Vertragsanbahnung). Die
+        Angaben, denen Sie unten gesondert zustimmen, werden direkt für andere
+        Pool-Nutzer sichtbar. Speicherung erfolgt, solange Ihr Profil aktiv
+        ist, bis zur Löschung auf Ihren Wunsch. <a href="../index.html#ae-legal-datenschutz" class="underline hover:text-white">Ausführliche Datenschutzerklärung</a>.
       </div>
 
       <div id="ae-reg-success" class="ae-success-banner" style="display:none;" role="status"></div>
@@ -120,7 +120,7 @@
           <span class="ae-checkbox-hit"><input type="checkbox" id="ae-reg-einwilligung"></span>
           <span class="text-sm">
             Ich willige ein, dass mein Profil mit den oben angegebenen Daten öffentlich im AKI-Pool
-            angezeigt wird, sobald es von einem Admin freigeschaltet wurde. *
+            angezeigt wird. *
           </span>
         </label>
         <button type="submit" class="ae-btn-primary w-full" style="padding:15px;">Profil anlegen</button>
@@ -196,7 +196,7 @@
           errorEl.style.display = 'block';
           return;
         }
-        successEl.textContent = 'Profil angelegt — wartet auf Admin-Freischaltung. Sie erhalten keine automatische Benachrichtigung im Scaffold-Stadium.';
+        successEl.textContent = 'Profil angelegt und direkt im Pool sichtbar. Sie erhalten keine automatische Benachrichtigung im Scaffold-Stadium.';
         successEl.style.display = 'block';
         form.style.display = 'none';
       });

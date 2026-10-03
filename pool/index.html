@@ -86,7 +86,7 @@
   <div class="pt-20">
     <main id="main-content" class="max-w-6xl mx-auto px-4 md:px-8 py-10 md:py-16">
       <h1 class="ae-michroma text-xl md:text-2xl mb-2" style="color:#E8C39E;">Honorar-AKI-Pool</h1>
-      <p class="text-[#C0C0C0] text-sm max-w-2xl mb-8">Freigeschaltete Profile selbstständiger Pflegefachkräfte in der außerklinischen Intensivpflege. Alle Profile wurden vor Veröffentlichung von einem Admin geprüft.</p>
+      <p class="text-[#C0C0C0] text-sm max-w-2xl mb-8">Profile selbstständiger Pflegefachkräfte in der außerklinischen Intensivpflege. Nutzen Sie die Suche und Filter, um passende Fachkräfte zu finden.</p>
 
       <div class="ae-glass-strip rounded-2xl p-4 md:p-5 flex flex-col md:flex-row gap-3 mb-8">
         <label class="flex-1 text-xs font-semibold text-[#9CADC9]">
@@ -107,7 +107,7 @@
 
       <div class="ae-card p-6 mt-12 text-center max-w-xl mx-auto">
         <h2 class="font-bold text-base mb-2 text-white">Sie sind selbstständige Pflegefachkraft?</h2>
-        <p class="text-[#C0C0C0] text-sm mb-4">Legen Sie jetzt Ihr Profil an — nach kurzer Admin-Prüfung erscheinen Sie hier im Pool.</p>
+        <p class="text-[#C0C0C0] text-sm mb-4">Legen Sie jetzt Ihr Profil an — Sie erscheinen direkt hier im Pool.</p>
         <a href="registrieren.html" class="ae-btn-primary">Jetzt registrieren</a>
       </div>
     </main>
@@ -174,9 +174,9 @@
           return;
         }
         var profile = result.data.profile || [];
-        statusEl.textContent = profile.length + ' freigeschaltete Profil(e) gefunden.';
+        statusEl.textContent = profile.length + ' Profil(e) gefunden.';
         gridEl.innerHTML = profile.length ? profile.map(renderProfile).join('') :
-          '<p class="text-[#9CADC9] text-sm">Noch keine freigeschalteten Profile in dieser Auswahl.</p>';
+          '<p class="text-[#9CADC9] text-sm">Noch keine Profile in dieser Auswahl.</p>';
       }
 
       blSelect.addEventListener('change', loadPool);
